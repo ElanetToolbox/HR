@@ -1,0 +1,1579 @@
+﻿{
+    "Employees": [
+        {
+            "FullName": "Δεληγιάννης Φωκίων",
+            "DateHired": "1/11/2016",
+            "DoB": "18/5/1953",
+            "Directorate": "Γεν. Διευθυντής",
+            "Specialty": "Τεχνικός",
+            "Position": "Γενικός Δ/ντής"
+        },
+        {
+            "FullName": "Παγανός Κωνσταντίνος",
+            "DateHired": "1/3/2012",
+            "DoB": "10/2/1973",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Δ/ντής Διαχείρισης Προγραμμάτων"
+        },
+        {
+            "FullName": "Κοσμάς Γιώργος",
+            "DateHired": "25/1/1993",
+            "DoB": "7/11/1949",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Οικονομικός",
+            "Position": "Δ/ντής Υποστήριξης"
+        },
+        {
+            "FullName": "Μαγκλάρα Αλεξάνδρα",
+            "DateHired": "1/9/1994",
+            "DoB": "1/2/1966",
+            "Directorate": "Νομική Σύμβουλος",
+            "Specialty": "Δικηγόρος",
+            "Position": "Νομική Σύμβουλος  & Υπ. Δημοσιότητας"
+        },
+        {
+            "FullName": "Αργυροπούλου Αλίκη",
+            "DateHired": "9/10/2006",
+            "DoB": "2/3/1978",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Υπεύθυνη Προγραμμάτων"
+        },
+        {
+            "FullName": "Παπαντώνη Χαρά",
+            "DateHired": "14/4/2013",
+            "DoB": "8/3/1982",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Υπεύθυνη Προγραμμάτων"
+        },
+        {
+            "FullName": "Παράσχη Μάριον",
+            "DateHired": "21/1/2005",
+            "DoB": "27/6/1973",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Υπεύθυνη Εσωτερικών Επαληθεύσεων"
+        },
+        {
+            "FullName": "Βραχνός Αθανάσιος",
+            "DateHired": "1/9/2005",
+            "DoB": "27/2/1976",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Αρχι-ΟΤΥ"
+        },
+        {
+            "FullName": "Γώγολου Μαρία",
+            "DateHired": "1/10/2002",
+            "DoB": "20/1/1969",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Αρχι-ΟΤΥ"
+        },
+        {
+            "FullName": "Δάρλας Γεώργιος",
+            "DateHired": "1/3/2001",
+            "DoB": "25/2/1975",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Συστήματα (Senior IT)"
+        },
+        {
+            "FullName": "Καμπανάρος Στυλιανός",
+            "DateHired": "1/3/2004",
+            "DoB": "16/7/1973",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Συντονιστής Δράσης"
+        },
+        {
+            "FullName": "Κίτσου Κατερίνα",
+            "DateHired": "19/12/2005",
+            "DoB": "15/11/1979",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Αρχι-ΟΤΥ"
+        },
+        {
+            "FullName": "Λιακόπουλος Χριστόφορος",
+            "DateHired": "1/3/2003",
+            "DoB": "20/7/1974",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Αρχι-ΟΤΥ"
+        },
+        {
+            "FullName": "Λιόντος Ναπολέων",
+            "DateHired": "22/4/2013",
+            "DoB": "18/4/1979",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Υπεύθυνος Έρευνας & Ανάπτυξης"
+        },
+        {
+            "FullName": "Μπαντράς Κωνσταντίνος",
+            "DateHired": "13/1/2009",
+            "DoB": "14/12/1981",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Υπεύθυνος Ανθρώπινων Πόρων"
+        },
+        {
+            "FullName": "Παπαδοπούλου Δήμητρα",
+            "DateHired": "24/10/2005",
+            "DoB": "26/6/1980",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Αρχι-ΟΤΥ"
+        },
+        {
+            "FullName": "Χατζηκωνσταντής Γεώργιος",
+            "DateHired": "1/7/2014",
+            "DoB": "24/4/1985",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Αρχι-ΟΤΥ"
+        },
+        {
+            "FullName": "Αθανασάτου Ξένια",
+            "DateHired": "17/9/2002",
+            "DoB": "31/3/1974",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Γατσούλη Κατερίνα",
+            "DateHired": "25/7/2007",
+            "DoB": "7/9/1977",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Γκουντέλας Βασίλειος",
+            "DateHired": "2/6/1993",
+            "DoB": "17/7/1959",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Καλφόπουλος Δημήτριος",
+            "DateHired": "1/7/2014",
+            "DoB": "23/8/1966",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Κοσμάς Αρίσταρχος",
+            "DateHired": "1/10/2011",
+            "DoB": "5/7/1979",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Κοσμόπουλος Κωνσταντίνος",
+            "DateHired": "13/10/2014",
+            "DoB": "4/3/1986",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Μακροζωνάρης Αναστάσιος",
+            "DateHired": "20/8/2007",
+            "DoB": "9/5/1965",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Μήτσης Γεώργιος",
+            "DateHired": "1/9/2014",
+            "DoB": "22/10/1980",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Μουστάκα Θεανώ",
+            "DateHired": "1/7/2014",
+            "DoB": "4/1/1978",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Μπασιάκος Σταύρος",
+            "DateHired": "1/6/2016",
+            "DoB": "14/6/1990",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Παπαγιάννης Αλέξανδρος",
+            "DateHired": "1/10/2003",
+            "DoB": "23/2/1956",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Παπακωνσταντίνου Δήμητρα",
+            "DateHired": "11/10/2007",
+            "DoB": "14/7/1981",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Παπακωνσταντίνου Ιωάννα",
+            "DateHired": "13/10/2014",
+            "DoB": "28/9/1987",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Παπασταμούλη Μαρία",
+            "DateHired": "1/10/2002",
+            "DoB": "21/1/1973",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Πιτσινού Κονδυλία",
+            "DateHired": "1/9/2014",
+            "DoB": "7/11/1975",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Σακελλαρίδης Ιωάννης",
+            "DateHired": "15/9/2014",
+            "DoB": "23/6/1987",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Σουλιμιώτη Μαρία",
+            "DateHired": "2/5/2003",
+            "DoB": "2/11/1976",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Σταθάκος Φώτιος",
+            "DateHired": "1/7/2014",
+            "DoB": "1/9/1982",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Τομαρά Αργυρώ",
+            "DateHired": "1/11/2011",
+            "DoB": "20/10/1974",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Τρανός Δημήτριος",
+            "DateHired": "1/7/2014",
+            "DoB": "4/8/1976",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Τσακός Ιωάννης",
+            "DateHired": "18/7/2014",
+            "DoB": "14/9/1987",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Φλεμετάκης Αλέξανδρος",
+            "DateHired": "1/7/2014",
+            "DoB": "12/6/1979",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Φραγκοπούλου Μαριάννα",
+            "DateHired": "6/5/2008",
+            "DoB": "21/3/1981",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Senior Ελεγκτής"
+        },
+        {
+            "FullName": "Άννινος Ηλίας",
+            "DateHired": "1/5/2016",
+            "DoB": "15/7/1983",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Θεοδώρου Γεώργιος",
+            "DateHired": "1/5/2016",
+            "DoB": "29/8/1989",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Πουρναρά Μαρία",
+            "DateHired": "13/10/2014",
+            "DoB": "13/1/1990",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Πανδρεμένου Ελευθερία",
+            "DateHired": "3/2/2016",
+            "DoB": "24/4/1986",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Σταυρακόπουλος Γεώργιος",
+            "DateHired": "1/2/2016",
+            "DoB": "18/2/1985",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής - Τεχνικός Ασφαλείας"
+        },
+        {
+            "FullName": "Σταυρέλη Μαρία",
+            "DateHired": "2/11/2015",
+            "DoB": "13/9/1986",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Φαρμάκη Ελένη",
+            "DateHired": "1/6/2016",
+            "DoB": "21/10/1990",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Φλουρής Κωνσταντίνος",
+            "DateHired": "20/8/2014",
+            "DoB": "17/1/1983",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Συστήματα (Προγραμματιστές)"
+        },
+        {
+            "FullName": "Αραμπατζόγλου Δημήτριος",
+            "DateHired": "8/5/2018",
+            "DoB": "6/9/1992",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Γάκη Αλεξάνδρα",
+            "DateHired": "7/1/2019",
+            "DoB": "2/8/1980",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Γιαννοσπύρος Τριαντάφυλλος",
+            "DateHired": "7/1/2019",
+            "DoB": "28/12/1993",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Γιώτη Αδαμαντία",
+            "DateHired": "18/6/2018",
+            "DoB": "28/11/1992",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Δαρμογιάννης Γεώργιος",
+            "DateHired": "18/6/2018",
+            "DoB": "25/8/1988",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Δήμιζα Μαριβά",
+            "DateHired": "1/6/2018",
+            "DoB": "28/7/1993",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Ζαπαντιώτης Ιωάννης",
+            "DateHired": "7/1/2019",
+            "DoB": "30/8/1990",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Θεόφιλος Χρήστος",
+            "DateHired": "7/1/2019",
+            "DoB": "17/10/1989",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Ιωαννίδου Εύη",
+            "DateHired": "1/6/2018",
+            "DoB": "12/8/1993",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Καζακίας Πάρις",
+            "DateHired": "14/5/2018",
+            "DoB": "17/12/1962",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Καλύβα Δήμητρα",
+            "DateHired": "18/6/2018",
+            "DoB": "11/3/1987",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Λεπίδα Ναταλία",
+            "DateHired": "7/1/2019",
+            "DoB": "31/5/1990",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Μητρομάρας Θεοφάνης",
+            "DateHired": "7/1/2019",
+            "DoB": "28/9/1987",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Μπογιαντζής Ανδρέας",
+            "DateHired": "7/1/2019",
+            "DoB": "19/7/1992",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Πάνου Παναγιώτα",
+            "DateHired": "7/1/2019",
+            "DoB": "10/1/1992",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Παρασκευοπούλου Ευθυμία",
+            "DateHired": "18/6/2018",
+            "DoB": "8/5/1988",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Πορτιάς Ευάγγελος",
+            "DateHired": "18/6/2018",
+            "DoB": "3/1/1986",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Πουλάκη Βασιλική",
+            "DateHired": "7/1/2019",
+            "DoB": "28/7/1974",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Σίνη Ειρήνη",
+            "DateHired": "7/1/2019",
+            "DoB": "26/10/1991",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Σπανογιάννη Ελισάβετ",
+            "DateHired": "7/1/2019",
+            "DoB": "28/8/1986",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Τσιλιβίγκος Αθανάσιος",
+            "DateHired": "1/6/2018",
+            "DoB": "9/8/1981",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Τσομώκος Χρήστος",
+            "DateHired": "18/6/2018",
+            "DoB": "28/4/1981",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Φάββας Νικόλαος",
+            "DateHired": "18/6/2018",
+            "DoB": "29/10/1993",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Φαφούτη Ελκιώνη",
+            "DateHired": "7/1/2019",
+            "DoB": "9/12/1982",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Χαντζή Χάρις",
+            "DateHired": "2/5/2018",
+            "DoB": "28/10/1993",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Χατζηπαραδείσης Ιάσωνας",
+            "DateHired": "8/1/2018",
+            "DoB": "11/8/1990",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Συστήματα (Προγραμματιστές)"
+        },
+        {
+            "FullName": "Χρονόπουλος Αδαμάντιος",
+            "DateHired": "7/1/2019",
+            "DoB": "6/7/1983",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Βαλμάς Δημήτριος",
+            "DateHired": "1/6/2006",
+            "DoB": "28/6/1964",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Οικονομικός",
+            "Position": "Τμηματάρχης"
+        },
+        {
+            "FullName": "Στριμμένου Σπυριδούλα",
+            "DateHired": "3/5/1993",
+            "DoB": "8/3/1955",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Λογιστήριο",
+            "Position": "Τμηματάρχης"
+        },
+        {
+            "FullName": "Αστάρας Βησσαρίων",
+            "DateHired": "3/6/2019",
+            "DoB": "08/03/1987",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Βαμβέσος Νικόλαος",
+            "DateHired": "3/6/2019",
+            "DoB": "01/04/1981",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Δημητρίου Δήμος",
+            "DateHired": "3/6/2019",
+            "DoB": "04/12/1987",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Δρακωνάκης Εμμανουήλ",
+            "DateHired": "3/6/2019",
+            "DoB": "19/08/1993",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Ερωτοκρίτου Μιχάλης",
+            "DateHired": "3/6/2019",
+            "DoB": "12/10/1982",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Ζήκου Αιμιλία",
+            "DateHired": "3/6/2019",
+            "DoB": "04/01/1994",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Καββαδία Φρόσω",
+            "DateHired": "3/6/2019",
+            "DoB": "22/03/1976",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Καλαράς Βαγγέλης",
+            "DateHired": "3/6/2019",
+            "DoB": "17/12/1988",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Κόλα Ευγενία",
+            "DateHired": "3/6/2019",
+            "DoB": "25/10/1986",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Κοροπούλη Μαρία",
+            "DateHired": "3/6/2019",
+            "DoB": "17/09/1981",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Λιάσκου Αιμιλία",
+            "DateHired": "3/6/2019",
+            "DoB": "02/06/1995",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Μασούρα Αθανασία",
+            "DateHired": "3/6/2019",
+            "DoB": "21/02/1988",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Μπαλαφούτης Ανδρέας",
+            "DateHired": "3/6/2019",
+            "DoB": "30/05/1983",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Μπίμπα Ζένια",
+            "DateHired": "3/6/2019",
+            "DoB": "04/04/1994",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Νιάρχου Κωνσταντίνα",
+            "DateHired": "3/6/2019",
+            "DoB": "06/03/1993",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Ρένεση Νίκη",
+            "DateHired": "3/6/2019",
+            "DoB": "21/10/1980",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Σουρούβαλη Ναταλία",
+            "DateHired": "3/6/2019",
+            "DoB": "03/10/1992",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Σοφού Άρτεμις",
+            "DateHired": "3/6/2019",
+            "DoB": "08/11/1989",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Σπαής Γεώργιος",
+            "DateHired": "3/6/2019",
+            "DoB": "26/02/1991",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Τσιρίκος Πέτρος",
+            "DateHired": "3/6/2019",
+            "DoB": "17/06/1993",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Βιόπουλος Γιώργος",
+            "DateHired": "16/9/2019",
+            "DoB": "30/1/1984",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Κάλφα Ελεάννα",
+            "DateHired": "16/9/2019",
+            "DoB": "1/7/1989",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Αθανασίου Δέσποινα",
+            "DateHired": "8/1/2020",
+            "DoB": "11/19/90",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Αλεξοπούλου Βασιλική",
+            "DateHired": "8/1/2020",
+            "DoB": "8/6/91",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Ανδρικόπουλος Δημήτρης",
+            "DateHired": "8/1/2020",
+            "DoB": "10/26/94",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Βανάκα Δήμητρα",
+            "DateHired": "8/1/2020",
+            "DoB": "4/21/87",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Βόλης Αργύριος",
+            "DateHired": "8/1/2020",
+            "DoB": "7/29/76",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Γιαννοπούλου Όλγα",
+            "DateHired": "8/1/2020",
+            "DoB": "2/23/92",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Δήμος Ευάγγελος",
+            "DateHired": "8/1/2020",
+            "DoB": "3/25/81",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Δουλγεράκης Μιχάλης",
+            "DateHired": "8/1/2020",
+            "DoB": "4/11/83",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Ζαρρή Ελένη",
+            "DateHired": "13/1/2020",
+            "DoB": "5/23/91",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Κακριδώνη Ελισάβετ",
+            "DateHired": "13/1/2020",
+            "DoB": "4/5/92",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Καμπάνη Ιωάννα",
+            "DateHired": "8/1/2020",
+            "DoB": "7/21/78",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Καραπτάς Βασίλειος",
+            "DateHired": "8/1/2020",
+            "DoB": "3/21/90",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Καρασογιαννίδης Δημήτρης",
+            "DateHired": "8/1/2020",
+            "DoB": "7/22/92",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Καψιμάλη Ελένη",
+            "DateHired": "8/1/2020",
+            "DoB": "11/1/96",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Κιτσάκη Αμαλία",
+            "DateHired": "8/1/2020",
+            "DoB": "1/30/83",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Κορύλλου Ελένη",
+            "DateHired": "8/1/2020",
+            "DoB": "8/14/93",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Κοτσίρα Ιωάννα",
+            "DateHired": "8/1/2020",
+            "DoB": "6/4/94",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Κοτταρίδης Ιωάννης",
+            "DateHired": "8/1/2020",
+            "DoB": "8/4/95",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Κουτελιδάκη Άννα",
+            "DateHired": "8/1/2020",
+            "DoB": "3/14/91",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Κοψαλίδου Χριστίνα",
+            "DateHired": "8/1/2020",
+            "DoB": "12/13/90",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Λάζου Ελένη",
+            "DateHired": "8/1/2020",
+            "DoB": "11/30/94",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Λεσιώτη Μαρία",
+            "DateHired": "8/1/2020",
+            "DoB": "4/14/95",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Ματθαιακάκης Ματθαίος",
+            "DateHired": "8/1/2020",
+            "DoB": "2/3/1970",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "ΙΤ",
+            "Position": "Συστήματα (Προγραμματιστές)"
+        },
+        {
+            "FullName": "Μητσάκου Ευαγγελία",
+            "DateHired": "8/1/2020",
+            "DoB": "3/28/81",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Μπιτζακτσή Μαρία",
+            "DateHired": "8/1/2020",
+            "DoB": "11/8/93",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Νικολακάκου Γεωργία",
+            "DateHired": "8/1/2020",
+            "DoB": "5/30/94",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Παπαγιάνναρος  Δημήτρης",
+            "DateHired": "8/1/2020",
+            "DoB": "11/9/1990",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Παπαδάκη Αμαλία",
+            "DateHired": "8/1/2020",
+            "DoB": "8/16/81",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Παπαδημητρίου Κωνσταντίνος - Νικόλαος",
+            "DateHired": "8/1/2020",
+            "DoB": "5/16/91",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Πατρινός Χρήστος",
+            "DateHired": "8/1/2020",
+            "DoB": "3/20/91",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Παυλοπούλου Αικατερίνη",
+            "DateHired": "8/1/2020",
+            "DoB": "9/6/93",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Πολίτσος Δημήτρης",
+            "DateHired": "8/1/2020",
+            "DoB": "1/7/78",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Ραπτοπούλου Ελένη",
+            "DateHired": "13/1/2020",
+            "DoB": "11/3/82",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Ρουμελιώτη Διαμάντω",
+            "DateHired": "13/1/2020",
+            "DoB": "8/1/84",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Σαρβανίδου Κυριακή",
+            "DateHired": "8/1/2020",
+            "DoB": "4/23/88",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Σερέτης Νικόλαος",
+            "DateHired": "13/1/2020",
+            "DoB": "3/28/86",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Σκαρλίγκου Φωτεινή",
+            "DateHired": "8/1/2020",
+            "DoB": "2/5/91",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Σκαρτσίλη Εβελίνα",
+            "DateHired": "8/1/2020",
+            "DoB": "1/1/93",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Σκευούλη Αλεξάνδρα",
+            "DateHired": "8/1/2020",
+            "DoB": "5/24/89",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Στρέμπα Αθανασία",
+            "DateHired": "8/1/2020",
+            "DoB": "9/3/86",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Τζιβίλογλου Μαρία",
+            "DateHired": "8/1/2020",
+            "DoB": "6/15/95",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Τιπτηρής Ιωάννης",
+            "DateHired": "8/1/2020",
+            "DoB": "4/27/94",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Τόκου Ροβένα",
+            "DateHired": "8/1/2020",
+            "DoB": "1/1/79",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Τσαρός Περικλής",
+            "DateHired": "8/1/2020",
+            "DoB": "1/28/94",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Χαμπεσής Ηλίας",
+            "DateHired": "8/1/2020",
+            "DoB": "1/24/95",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Αμπατζής Αντώνης",
+            "DateHired": "2/12/2019",
+            "DoB": "10/26/93",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Μεντή Μαρία",
+            "DateHired": "2/12/2019",
+            "DoB": "5/17/94",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Μπέρμπεης Ιωάννης",
+            "DateHired": "2/12/2019",
+            "DoB": "2/14/96",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Παπακώστας Ιωάννης",
+            "DateHired": "9/12/2019",
+            "DoB": "9/14/93",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Ρούλια Γεωργία",
+            "DateHired": "2/12/2019",
+            "DoB": "12/26/97",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Σπυροπούλου Παυλίνα",
+            "DateHired": "9/12/2019",
+            "DoB": "6/27/96",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Καρακάσης Νικόλαος",
+            "DateHired": "3/2/2020",
+            "DoB": "20/8/1991",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Λάμπος Νικόλαος",
+            "DateHired": "3/2/2020",
+            "DoB": "1/6/77",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Νιάρου Σοφία",
+            "DateHired": "3/2/2020",
+            "DoB": "19/1/1985",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Junior Ελεγκτής"
+        },
+        {
+            "FullName": "Φραγκής Κωνσταντίνος",
+            "DateHired": "1/1/2018",
+            "DoB": "9/8/1966",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Μουρίκης Δημήτριος",
+            "DateHired": "1/3/2017",
+            "DoB": "4/9/1973",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Μπούτου Μαρία",
+            "DateHired": "1/2/2011",
+            "DoB": "26/12/1977",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Αποστολάκη Ευφροσύνη",
+            "DateHired": "1/3/2017",
+            "DoB": "20/7/1980",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Γεωργοπούλου Αννέζα",
+            "DateHired": "1/3/2017",
+            "DoB": "15/12/1987",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Κοροβέσης Φίλιππος",
+            "DateHired": "1/2/2011",
+            "DoB": "8/2/1969",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Τσούμα Ευαγγελία",
+            "DateHired": "7/1/2019",
+            "DoB": "14/6/1988",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Καρεφυλλάκης Μιχάλης",
+            "DateHired": "16/9/2013",
+            "DoB": "23/8/1982",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Καρανίκας Βαγγέλης",
+            "DateHired": "0",
+            "DoB": "1/1/1951",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Νταλαμάρας Αλέξιος",
+            "DateHired": "7/1/2019",
+            "DoB": "25/4/1983",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        },
+        {
+            "FullName": "Γιούνης Δημήτριος",
+            "DateHired": "15/2/2016",
+            "DoB": "20/5/1985",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Βοηθός Αρχι-ΟΤΥ"
+        },
+        {
+            "FullName": "Κόντος Βασίλειος",
+            "DateHired": "1/10/2007",
+            "DoB": "24/9/1980",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Εσωτερικές Επαληθεύσεις\r\nΥπέυθυνος Εκπαίδευσης"
+        },
+        {
+            "FullName": "Λεγάτος Ελευθέριος",
+            "DateHired": "15/10/2015",
+            "DoB": "15/4/1989",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Βοηθός Αρχι-ΟΤΥ\r\nΣυντονιστής Δράσης"
+        },
+        {
+            "FullName": "Μάρας Στυλιανός",
+            "DateHired": "1/9/2014",
+            "DoB": "30/3/1990",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Βοηθός Αρχι-ΟΤΥ"
+        },
+        {
+            "FullName": "Σιώνα Κατεριλένα",
+            "DateHired": "1/7/2014",
+            "DoB": "23/2/1982",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Υπεύθυνη Διαδικασιών\r\nTOOLBOX"
+        },
+        {
+            "FullName": "Σκουλάτος Νικόλαος",
+            "DateHired": "22/4/2013",
+            "DoB": "31/5/1987",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Αρχι-ΟΤΥ"
+        },
+        {
+            "FullName": "Τσιδήμας Ορέστης",
+            "DateHired": "15/9/2014",
+            "DoB": "3/4/1984",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Τεχνικός",
+            "Position": "Υπεύθυνος Συστημάτων\r\nTOOLBOX\r\nISO"
+        },
+        {
+            "FullName": "Χαϊδεμενάκη Μέγκυ",
+            "DateHired": "9/10/2007",
+            "DoB": "8/4/1984",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Βοηθός Αρχι-ΟΤΥ\r\nΣυντονιστής Δράσης"
+        },
+        {
+            "FullName": "Αγγελόπουλος Ηρακλής",
+            "DateHired": "18/11/2009",
+            "DoB": "31/3/1987",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Αλεξανδρόπουλος Ευστάθιος",
+            "DateHired": "1/10/1998",
+            "DoB": "20/1/1975",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Αναγνώστου Πολυτίμη",
+            "DateHired": "3/6/2002",
+            "DoB": "9/2/1969",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Αντωνάτος Κωνσταντίνος",
+            "DateHired": "1/10/2002",
+            "DoB": "1/3/1974",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Αποστολίδου Βασιλική",
+            "DateHired": "1/9/2006",
+            "DoB": "28/2/1966",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Αποστολοπούλου Ευτυχία",
+            "DateHired": "30/4/1993",
+            "DoB": "21/4/1962",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Βασιλούλη Φανή",
+            "DateHired": "20/7/2006",
+            "DoB": "12/9/1971",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Γαρδέλη Μάγια - Μαρία",
+            "DateHired": "9/2/1994",
+            "DoB": "2/8/1968",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Γερασιμίδη Δήμητρα",
+            "DateHired": "1/3/2002",
+            "DoB": "2/4/1977",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Θεοφιλοπούλου Μαρία",
+            "DateHired": "5/7/2004",
+            "DoB": "5/1/1979",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Κοπτερός Σταύρος",
+            "DateHired": "1/10/2006",
+            "DoB": "22/3/1967",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Κοσμάς Μάριος",
+            "DateHired": "13/10/2008",
+            "DoB": "14/8/1987",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Λογιστήριο",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Κουκολιά Αικατερίνη",
+            "DateHired": "1/9/2006",
+            "DoB": "9/5/1971",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Κτίστης Ιωάννης",
+            "DateHired": "8/12/2014",
+            "DoB": "21/2/1981",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Λαμπροπούλου Μαρία",
+            "DateHired": "1/10/2006",
+            "DoB": "11/5/1980",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Οικονομικός",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Μπότσης Αργύριος",
+            "DateHired": "3/2/2017",
+            "DoB": "20/9/1991",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Παναγιωτόπουλος Νικόλαος",
+            "DateHired": "19/11/2007",
+            "DoB": "29/6/1971",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Technical IT",
+            "Position": "Technical IT"
+        },
+        {
+            "FullName": "Παναγιωτοπούλου Μαρίνα",
+            "DateHired": "1/1/1997",
+            "DoB": "27/6/1975",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Λογιστήριο",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Πεταλάς Διονύσιος",
+            "DateHired": "21/10/2007",
+            "DoB": "30/10/1971",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Λογιστήριο",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Πρωτονοταρίου Πολυτίμη",
+            "DateHired": "1/1/2003",
+            "DoB": "12/1/1960",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Λογιστήριο",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Στεφανίδου Αναστασία",
+            "DateHired": "5/9/2007",
+            "DoB": "7/4/1961",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Γραμματεία Γενικής Διεύθυνσης",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Φίλος Γεώργιος",
+            "DateHired": "30/7/2007",
+            "DoB": "30/4/1975",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Technical IT",
+            "Position": "Βοηθός Technical IT"
+        },
+        {
+            "FullName": "Χριστοδούλου Νεκταρία",
+            "DateHired": "8/3/1993",
+            "DoB": "14/1/1968",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Χρυσαειδής Δημήτριος",
+            "DateHired": "3/7/2006",
+            "DoB": "1/3/1977",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπηρεσίες"
+        },
+        {
+            "FullName": "Μπούντα Αναστασία",
+            "DateHired": "5/11/2019",
+            "DoB": "3/11/1960",
+            "Directorate": "Διευθ. Υποστήριξης",
+            "Specialty": "Υποστήριξη",
+            "Position": "Υπεύθυνη Προμηθειών"
+        },
+        {
+            "FullName": "Τσάτσου Κωνσταντίνα",
+            "DateHired": "3/6/2019",
+            "Directorate": "Διευθ. Διαχείρισης",
+            "Specialty": "Οικονομικός",
+            "Position": "Ελεγκτής"
+        }
+    ]
+}
