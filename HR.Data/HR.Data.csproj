@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Employees.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IEmployeeData.cs" />
     <Compile Include="Services\JsonEmpData.cs" />
