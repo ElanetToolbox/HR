@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Employees.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,8 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="tests\testPdf.pdf" />
     <None Include="tests\hr_data.json" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="tests\logo..png" />
+    <Content Include="tests\test.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

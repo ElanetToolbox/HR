@@ -9,5 +9,7 @@ namespace HR.Data.Services
     public interface IEmployeeData
     {
         IEnumerable<Employee> GetAll();
+        Employee Get(int ID);
+        void Save(Employees emps);
     }
 }
