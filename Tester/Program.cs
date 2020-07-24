@@ -14,10 +14,6 @@ namespace Tester
         {
             IEmployeeData empDataService = new JsonEmpData();
             var derp = empDataService.GetAll();
-            foreach (var d in derp)
-            {
-                d.Documents = new List<string> { @"C:\Users\chatziparadeisis.i\source\repos\HR\HR.Data\tests\testPdf.pdf" };
-            }
             empDataService.Save(new Employees { Emps = derp.ToList() }); 
         }
     }

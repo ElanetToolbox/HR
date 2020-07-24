@@ -20,6 +20,8 @@ namespace HR.Data.Models
         public string Specialty { get; set; }
         public string Position { get; set; }
         public string Photo { get; set; }
+        public string Supervisor { get; set; }
+        public decimal MixedIncome { get; set; }
         public IEnumerable<string> Documents { get; set; }
 
         [JsonIgnore]
