@@ -13,7 +13,7 @@ namespace HR.Web.Controllers
 
         public EmployeesController()
         {
-            db = new JsonEmpData();
+            db = new ApiEmpData();
         }
         // GET: Employees
         public ActionResult Index()

@@ -71,18 +71,19 @@
                 </dl>
             </td>
             <td>
-                <img src="@Model.Photo" width="150" height="150"/>
+                <img src="@Model.photo_blob_html_image" width="150" height="150"/>
+                @*<img src="@Model.Photo" width="150" height="150"/>*@
             </td>
         </tr>
         <tr>
             <th>Εγγραφα</th>
         </tr>
-        @foreach (var doc in Model.Documents)
+        @*@foreach (var doc in Model.Documents)
         {
             <td>
                 <a href="@Url.Content(doc)" target="_blank">@Path.GetFileNameWithoutExtension(doc)</a>
             </td>
-        }
+        }*@
     </table>
 </div>
 <p>
