@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Functions.cs" />
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Employees.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
