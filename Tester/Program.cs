@@ -21,7 +21,7 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            var client = new RestClient("https://www.elanet.gr/wp-json/hr-app/v3/login");
+            var client = new RestClient("https://www.api.elanet.gr/wp-json/hr-app/v3/login");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddParameter("user", "tsidimas.o");
