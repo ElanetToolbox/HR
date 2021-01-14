@@ -44,27 +44,27 @@ namespace HR.Data.Models
             {
                 FirstName = dict["FirstName"].ToString();
             }
-            if (dict.ContainsKey("DateHired"))
+            if (dict.ContainsKey("FYEO_DateHired"))
             {
-                if (dict["DateHired"].ToString() != "") 
+                if (dict["FYEO_DateHired"].ToString() != "") 
                 {
-                    DateHired = DateTime.Parse(dict["DateHired"].ToString()); 
+                    DateHired = DateTime.Parse(dict["FYEO_DateHired"].ToString()); 
                 }
             }
-            if (dict.ContainsKey("DoB"))
+            if (dict.ContainsKey("FYEO_DoB"))
             {
-                if (dict["DoB"].ToString() != "")
+                if (dict["FYEO_DoB"].ToString() != "")
                 {
-                    DoB = DateTime.Parse(dict["DoB"].ToString());
+                    DoB = DateTime.Parse(dict["FYEO_DoB"].ToString());
                 }
             }
-            if (dict.ContainsKey("Directorate"))
+            if (dict.ContainsKey("FYEO_Directorate"))
             {
-                Directorate = dict["Directorate"].ToString();
+                Directorate = dict["FYEO_Directorate"].ToString();
             }
-            if (dict.ContainsKey("Specialty"))
+            if (dict.ContainsKey("FYEO_Specialty"))
             {
-                Specialty = dict["Specialty"].ToString();
+                Specialty = dict["FYEO_Specialty"].ToString();
             }
             if (dict.ContainsKey("Position"))
             {
