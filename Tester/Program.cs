@@ -13,7 +13,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Dynamic;
 using Newtonsoft.Json.Converters;
-using RestSharp;
 
 namespace Tester
 {
@@ -21,13 +20,24 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            var client = new RestClient("https://www.elanet.gr/wp-json/hr-app/v3/login");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            request.AddParameter("user", "tsidimas.o");
-            request.AddParameter("pass", "everton21##!");
-            IRestResponse response = client.Execute(request);
-            Console.WriteLine(response.Content);
+            //IEmployeeData empDataService = new JsonEmpData();
+            //var derp = empDataService.GetAll();
+            //empDataService.Save(new Employees { Emps = derp.ToList() }); 
+            string apiUrl = @"https://www.elanet.gr/wp-json/hr-app/v1/users/182";
+            WebRequest rGet = WebRequest.Create(apiUrl);
+            rGet.Method = "GET";
+            HttpWebResponse resp = null;
+            resp = (HttpWebResponse)rGet.GetResponse();
+
+            string result = null;
+            using(Stream stream = resp.GetResponseStream())
+            {
+                StreamReader sr = new StreamReader(stream);
+                result = sr.ReadToEnd();
+                sr.Close();
+            }
+            dynamic emp = JsonConvert.DeserializeObject(result);
+            JObject e = emp[0];
             int x = 1;
         }
 

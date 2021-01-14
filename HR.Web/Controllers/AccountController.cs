@@ -21,8 +21,7 @@ namespace HR.Web.Controllers
         {
             if (acc.Username == "1" && acc.Password == "1")
             {
-                return RedirectToAction("Index", "Employees");
-                ////return View("~/Views/Employees/Index.cshtml");
+                return View("/Employees");
             }
             else
             {

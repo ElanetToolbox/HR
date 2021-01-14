@@ -212,7 +212,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62116</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44397/Account/Login</IISUrl>
+          <IISUrl>https://localhost:44397/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
