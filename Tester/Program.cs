@@ -21,14 +21,8 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            var client = new RestClient("https://www.api.elanet.gr/wp-json/hr-app/v3/login");
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            request.AddParameter("user", "tsidimas.o");
-            request.AddParameter("pass", "everton21##!");
-            IRestResponse response = client.Execute(request);
-            Console.WriteLine(response.Content);
-            int x = 1;
+            ApiLoginData api = new ApiLoginData();
+            api.GetUser("tsidimas.o", "everton21##!");
         }
 
     }

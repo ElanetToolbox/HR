@@ -1,0 +1,11 @@
+﻿@model HR.Data.Models.LinkertQuestion
+<div class="modal fade" id="linkert_info">
+    <div class="modal-dialog">
+        <table>
+            @for (int i = 1; i <= 5; i++)
+            {
+                <th>@Model.options.Where(x => x.value == i).Single().description</th>
+            }
+        </table>
+    </div>
+</div>

@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace HR.Data.Services
 {
-    public class JsonEmpData : IEmployeeData
+    public class JsonEmpData 
     {
         string jsonPath = @"C:\Users\chatziparadeisis.i\source\repos\HR\HR.Data\tests\hr_data.json";
         JsonSerializerSettings set = new JsonSerializerSettings {DateFormatString = "d/M/yyyy" };

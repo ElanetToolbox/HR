@@ -66,9 +66,9 @@ namespace HR.Data.Models
             {
                 Specialty = dict["FYEO_Specialty"].ToString();
             }
-            if (dict.ContainsKey("Position"))
+            if (dict.ContainsKey("HRApp_TitleComputed"))
             {
-                Position = dict["Position"].ToString();
+                Position = dict["HRApp_TitleComputed"].ToString();
             }
         }
 

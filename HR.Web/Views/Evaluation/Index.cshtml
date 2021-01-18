@@ -1,0 +1,20 @@
+﻿@model HR.Data.Models.Evaluation
+
+@{
+    ViewBag.Title = "Index";
+}
+<table align="center">
+    <td>
+        <h2>Αξιολόγηση 2020</h2>
+    </td>
+</table>
+
+@foreach (var item in Model.Sections)
+{
+    @Html.Partial("_Section", item)
+}
+<table align="center">
+    <td>
+        <input type="button" name="submit" value="Υποβολή" onclick="location.href = '@(Url.Action("Index", "Employees"))'"/>
+    </td>
+</table>

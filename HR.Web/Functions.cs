@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HR.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,5 +13,9 @@ namespace HR.Web
         {
             return Path.GetFileName(fName);
         }
+
+        public static Account User;
+        public static List<Employee> Emps;
+
     }
 }

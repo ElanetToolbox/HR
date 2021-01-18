@@ -1,0 +1,17 @@
+﻿@model HR.Data.Models.EvalSection
+    <div>
+        <h3>
+            @Html.DisplayFor(model => model.Title)
+        </h3>
+        @foreach (var question in Model.questions)
+        {
+            if(Model.SectionType == "matrix")
+            {
+                @Html.Partial("_LinkertQuestion",question)
+            }
+            if(Model.SectionType == "text")
+            {
+                @Html.Partial("_TextQuestion",question)
+            }
+        }
+    </div>
