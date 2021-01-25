@@ -7,9 +7,45 @@
 <h2>@Html.DisplayFor(model => model.FullName)</h2>
 
 <div>
-    <hr />
     <table class="table" cellspacing="0">
         <tr>
+            <td width="500">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <img class="profile-image" src="@Model.photo_blob_html_image" width="250" height="250" style="border-radius:50%"></img>
+                    </div>
+                    <div class="panel-body">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                <i class="fa fa-thumb-tack" title="Θέση" style="font-size:20px" ></i>
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Seat)
+                            </dd>
+                            <dt>
+                                <i class="fa fa-envelope" title="e-mail" style="font-size:20px" ></i>
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.email)
+                            </dd>
+                            <dt>
+                                <i class="fa fa-phone-square" title="Τηλέφωνο" style="font-size:23px" ></i>
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Phone)
+                            </dd>
+                            <dt>
+                                <i class="fa fa-bullhorn" title="Αναφέρεται σε" style="font-size:23px" ></i>
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Supervisors)
+                            </dd>
+
+                        </dl>
+
+                    </div>
+                </div>
+            </td>
             <td>
                 <dl class="dl-horizontal">
                     <dt>
@@ -70,23 +106,13 @@
 
                 </dl>
             </td>
-            <td>
-                <img src="@Model.photo_blob_html_image" width="150" height="150"/>
-                @*<img src="@Model.Photo" width="150" height="150"/>*@
-            </td>
         </tr>
-        <tr>
-            <th>Εγγραφα</th>
-        </tr>
-        @*@foreach (var doc in Model.Documents)
-        {
-            <td>
-                <a href="@Url.Content(doc)" target="_blank">@Path.GetFileNameWithoutExtension(doc)</a>
-            </td>
-        }*@
     </table>
 </div>
 <p>
-    @Html.ActionLink("Επεξεργασία", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Αξιολόγηση", "Evaluate") 
+    <input onclick="location.href='@Url.Action("Edit", "Employees", new { id = Model.ID })'" value="Επεξεργασία" class="btn btn-primary" />
+    @if (Functions.Subordinates.Where(x=>x.ID==Model.ID).Any())
+    {
+        <input onclick="location.href='@Url.Action("Index", "Evaluation")'" value="Αξιολόγηση" class="btn btn-primary" />
+    }
 </p>

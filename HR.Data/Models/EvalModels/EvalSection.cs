@@ -38,26 +38,33 @@ namespace HR.Data.Models
                     questions.Add(newQuestion);
                 }
             }
+            if (SectionType == "text")
+            {
+                TextQuestion newQuestion = new TextQuestion();
+                newQuestion.order = 3;
+                newQuestion.text = "Παρατηρήσεις";
+                questions.Add(newQuestion);
+            }
         }
 
-        public float GetGrade()
-        {
-            if(SectionType == "text")
-            {
-                return 0;
-            }
-            else
-            {
-                int pureGrade = 0;
-                foreach (var q in questions)
-                {
-                    LinkertQuestion question = (LinkertQuestion)q;
-                    pureGrade += question.savedvalue;
-                }
-                Grade = Weight * pureGrade;
-                return Weight * pureGrade;
-            }
-        }
+        //public float GetGrade()
+        //{
+        //    if(SectionType == "text")
+        //    {
+        //        return 0;
+        //    }
+        //    else
+        //    {
+        //        int pureGrade = 0;
+        //        foreach (var q in questions)
+        //        {
+        //            LinkertQuestion question = (LinkertQuestion)q;
+        //            pureGrade += question.savedvalue;
+        //        }
+        //        Grade = Weight * pureGrade;
+        //        return Weight * pureGrade;
+        //    }
+        //}
 
     }
 }

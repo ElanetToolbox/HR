@@ -17,30 +17,13 @@ namespace HR.Data.Services
     {
         public Employee Get(int ID)
         {
-            //string apiUrl = @"https://www.api.elanet.gr/wp-json/hr-app/v3/users/";
-            ////string apiUrl = @"https://www.elanet.gr/wp-json/hr-app/v1/users/"+ID;
-            //WebRequest rGet = WebRequest.Create(apiUrl);
-            //rGet.Method = "POST";
-            ////request.AddParameter("user", "tsidimas.o");
-            //HttpWebResponse resp = null;
-            //resp = (HttpWebResponse)rGet.GetResponse();
-
             var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/users/");
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddParameter("id", ID);
             IRestResponse response = client.Execute(request);
             string result = response.Content;
-            //HttpWebResponse resp = (HttpWebResponse)response;
 
-
-            //string result = null;
-            //using (Stream stream = resp.GetResponseStream())
-            //{
-            //    StreamReader sr = new StreamReader(stream);
-            //    result = sr.ReadToEnd();
-            //    sr.Close();
-            //}
             dynamic emp = JsonConvert.DeserializeObject(result);
             var w = emp.Emps[0];
             Employee newEmp = new Employee();
@@ -65,19 +48,12 @@ namespace HR.Data.Services
 
         public IEnumerable<Employee> GetAll()
         {
-            string apiUrl = @"https://api.elanet.gr/wp-json/hr-app/v3/users/";
-            WebRequest rGet = WebRequest.Create(apiUrl);
-            rGet.Method = "POST";
-            HttpWebResponse resp = null;
-            resp = (HttpWebResponse)rGet.GetResponse();
-
-            string result = null;
-            using(Stream stream = resp.GetResponseStream())
-            {
-                StreamReader sr = new StreamReader(stream);
-                result = sr.ReadToEnd();
-                sr.Close();
-            }
+            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/users/");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AddParameter("limit", 300);
+            IRestResponse response = client.Execute(request);
+            string result = response.Content;
             dynamic emps = JsonConvert.DeserializeObject(result);
             var wh = emps.Emps;
             var elist = new List<object>(wh);
@@ -88,7 +64,51 @@ namespace HR.Data.Services
                 newEmp.FromJobjectSimple(emp);
                 employees.Add(newEmp);
             }
-            return employees;
+            return employees.Where(x=>x.Phone != "0");
+        }
+
+        public IEnumerable<Position> GetPositions()
+        {
+            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/jobtitles/");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AddParameter("limit", 300);
+            IRestResponse response = client.Execute(request);
+            string result = response.Content;
+            JObject jobs = (JObject)JsonConvert.DeserializeObject(result);
+            //List<JObject> plist = new List<JObject>(jobs.HR_Titles);
+            JArray plist = (JArray)jobs.SelectToken("HR_Titles");
+            List<Position> positions = new List<Position>();
+            foreach (var item in plist)
+            {
+                Position newp = new Position();
+                newp.id = (float)item.SelectToken("id");
+                newp.description = item.SelectToken("DropdownDescr").ToString();
+                positions.Add(newp);
+            }
+            return positions;
+        }
+
+        public IEnumerable<Department> GetDepartments()
+        {
+            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/teams/");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AddParameter("limit", 300);
+            IRestResponse response = client.Execute(request);
+            string result = response.Content;
+            JObject jobs = (JObject)JsonConvert.DeserializeObject(result);
+            //List<JObject> plist = new List<JObject>(jobs.HR_Titles);
+            JArray plist = (JArray)jobs.SelectToken("Teams");
+            List<Department> depts = new List<Department>();
+            foreach (var item in plist)
+            {
+                Department newp = new Department();
+                newp.id = item.SelectToken("id").ToString();
+                newp.description = item.SelectToken("DropdownDescr").ToString();
+                depts.Add(newp);
+            }
+            return depts;
         }
 
         public void Save(Employees emps)

@@ -4,19 +4,120 @@
     Layout = "~/Views/_LayoutPage1.cshtml";
 }
 
-<div class="vert" style="height:1000px">
-    <div class="login" >
-        <h1>ELANET HRApp</h1>
-        <form method="post" action="/Account/Verify">
-            <p><input type="text" name="Username" value="" placeholder="Username or Email"></p>
-            <p><input type="password" name="Password" value="" placeholder="Password"></p>
-            @*<p class="remember_me">
-                <label>
-                    <input type="checkbox" name="remember_me" id="remember_me">
-                    Remember me on this computer
-                </label>
-            </p>*@
-            <p class="submit"><input type="submit" name="commit" value="Login"></p>
+<style>
+    #out {
+        height: 100%;
+        width: 100%;
+    }
+    body {
+        background: #456;
+        background-image:url("../../Content/Images/loginbg.png");
+        background-size:cover;
+        background-repeat:no-repeat;
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+
+    .login {
+        width: 400px;
+        margin: 16px auto;
+        font-size: 16px;
+        transform: translateY(50%);
+    }
+
+        /* Reset top and bottom margins from certain elements */
+        .login-header,
+        .login p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+    /* The triangle form is achieved by a CSS hack */
+    .login-triangle {
+        width: 0;
+        margin-right: auto;
+        margin-left: auto;
+        border: 12px solid transparent;
+        border-bottom-color: #42aac3;
+    }
+
+    .login-header {
+        background: #42aac3;
+        padding-top:5px;
+        font-size: 1.4em;
+        font-weight: normal;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+    }
+
+    .login-container {
+        background: #ebebeb;
+        padding: 12px;
+    }
+
+    /* Every row inside .login-container is defined with p tags */
+    .login p {
+        padding: 12px;
+    }
+
+    .login input {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        border-width: 1px;
+        border-style: solid;
+        padding: 16px;
+        outline: 0;
+        font-family: inherit;
+        font-size: 0.95em;
+    }
+
+        .login input[type="email"],
+        .login input[type="password"] {
+            background: #fff;
+            border-color: #bbb;
+            color: #555;
+        }
+
+            /* Text fields' focus effect */
+            .login input[type="email"]:focus {
+                border-color: #888;
+            }
+
+            .login input[type="password"]:focus {
+                border-color: #888;
+            }
+
+        .login input[type="submit"] {
+            background: #42aac3;
+            border-color: transparent;
+            color: #fff;
+            cursor: pointer;
+        }
+
+            .login input[type="submit"]:hover {
+                background: #3797ae;
+            }
+
+            /* Buttons' focus effect */
+            .login input[type="submit"]:focus {
+                border-color: #05a;
+            }
+</style>
+
+<div id="out">
+    <div class="login">
+        <div class="login-triangle"></div>
+
+        <h2 class="login-header">
+            <img src="~/Content/Images/circle.png" height="80"/>
+            <img src="~/Content/Images/logotxt.png" height="70"/>
+        </h2>
+
+        <form class="login-container" method="post" action="/Account/Verify">
+            <p><input type="text" name="Username" placeholder="Όνομα Χρήστη"></p>
+            <p><input type="password" name="Password" placeholder="Κωδικός"></p>
+            <p><input type="submit" name="Commit" value="Είσοδος" id="btn"></p>
         </form>
     </div>
 </div>

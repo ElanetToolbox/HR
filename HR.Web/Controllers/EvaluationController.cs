@@ -15,12 +15,30 @@ namespace HR.Web.Controllers
         {
             db = new ApiEvaluationData();
         }
-        // GET: Evaluation
+
+        [HttpGet]
         public ActionResult Index()
         {
             var model = db.GetClearEval();
-            //model.Employee = emp;
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Index(Evaluation eval)
+        {
+            var z = Request.Form;
+            var model = db.GetClearEval();
+            model.FillFromForm(z);
+            var d = model.isComplete();
+            if (model.isComplete())
+            {
+                return RedirectToAction("Index", "Employees");
+            }
+            else
+            {
+                return View(model);
+            }
+            //return View(model);
         }
     }
 }

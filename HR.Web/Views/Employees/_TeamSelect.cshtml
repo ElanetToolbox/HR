@@ -1,0 +1,48 @@
+﻿@model  HR.Data.Models.Team
+<div>
+    <table>
+        <tr>
+            <th>
+                Θέση
+            </th>
+            <th>
+                Τμήμα
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <select name="positions" class="form-control">
+                    <option value=""></option>
+                    @foreach (var item in Functions.Positions)
+                    {
+                        if (Model.Position == item.id)
+                        {
+                            <option value="@item.id" selected>@item.description</option>
+                        }
+                        else
+                        {
+                            <option value="@item.id">@item.description</option>
+                        }
+                    }
+                </select>
+            </td>
+            <td>
+                <select name="departments" class="form-control">
+                    <option value=""></option>
+                    @foreach (var item in Functions.Departments)
+                    {
+                        if (Model.Name == item.id)
+                        {
+                            <option value="@item.id" selected>@item.description</option>
+                        }
+                        else
+                        {
+                            <option value="@item.id">@item.description</option>
+                        }
+                    }
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>
+

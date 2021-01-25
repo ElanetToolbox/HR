@@ -17,17 +17,30 @@ namespace HR.Web.Controllers
         {
             db = new ApiEmpData();
         }
-        // GET: Employees
+
         public ActionResult Index(Account user)
         {
-            //var model = db.GetAll();
-            var model = Functions.Emps;
+            IEnumerable<Employee> model;
+            if (Functions.Emps == null)
+            {
+                model = db.GetAll();
+            }
+            else
+            {
+                model = ViewBag.Session.Underlings;
+            }
             return View(model);
+        }
+
+        public ActionResult Evaluation()
+        {
+            return View("Index", Functions.Subordinates);
         }
 
         public ActionResult Details(int ID)
         {
             var model = db.Get(ID);
+            model.GetSupervisor(Functions.Emps);
             currentEmp = model;
             return View(model);
         }
@@ -35,6 +48,39 @@ namespace HR.Web.Controllers
         public ActionResult Evaluate()
         {
             return RedirectToAction("Index", "Evaluation");
+        }
+
+        public PartialViewResult TeamsPartial(Team model)
+        {
+            var result = PartialView("_TeamSelect", model);
+            return result;
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            Employee employee = db.Get(id);
+            Functions.Positions = db.GetPositions().ToList();
+            Functions.Departments = db.GetDepartments().ToList();
+            return View(employee);
+        }
+        
+        [HttpPost]
+        public ActionResult Edit(Employee emp)
+        {
+            emp.Teams = new List<Team>();
+            var d = Request.Form.AllKeys;
+            var positions = Request.Form["positions"].Split(',');
+            var departments = Request.Form["departments"].Split(',');
+            emp.Teams = new List<Team>();
+            for (int i = 0; i < positions.Length; i++)
+            {
+                if(!string.IsNullOrWhiteSpace(positions[i]) && !string.IsNullOrWhiteSpace(departments[i]))
+                {
+                    emp.Teams.Add(new Team { Name = departments[i], Position = float.Parse(positions[i]) });
+                }
+            }
+            return View();
         }
     }
 }

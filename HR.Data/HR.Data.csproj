@@ -51,6 +51,9 @@
     <Compile Include="Functions.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeModels\Department.cs" />
+    <Compile Include="Models\EmployeeModels\Position.cs" />
+    <Compile Include="Models\EmployeeModels\Team.cs" />
     <Compile Include="Models\Employees.cs" />
     <Compile Include="Models\EvalModels\EvalSection.cs" />
     <Compile Include="Models\EvalModels\IQuestion.cs" />

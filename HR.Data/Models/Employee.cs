@@ -23,6 +23,15 @@ namespace HR.Data.Models
         public string Supervisor { get; set; }
         public decimal MixedIncome { get; set; }
         public IEnumerable<string> Documents { get; set; }
+        public List<Team> Teams { get; set; }
+        public string email { get; set; }
+        public string Seat { get; set; }
+        public string Phone { get; set; }
+        public string Supervisors { get; set; }
+        public bool isEditor => editors().Contains(ID);
+        public bool isHR => hr().Contains(ID);
+
+        public List<Evaluation> Evaluations { get; set; }
 
         [JsonIgnore]
         public int Age => DoB == null ? 0 : Functions.GetAge(DoB.Value);
@@ -31,6 +40,7 @@ namespace HR.Data.Models
 
         public void FromJobjectSimple(JObject obj)
         {
+            Evaluations = new List<Evaluation>();
             Dictionary<string, object> dict = obj.ToObject<Dictionary<string, object>>();
             if (dict.ContainsKey("id"))
             {
@@ -46,21 +56,24 @@ namespace HR.Data.Models
             }
             if (dict.ContainsKey("FYEO_DateHired"))
             {
-                if (dict["FYEO_DateHired"].ToString() != "") 
+                if (dict["FYEO_DateHired"] != null && dict["FYEO_DateHired"].ToString() != "") 
                 {
                     DateHired = DateTime.Parse(dict["FYEO_DateHired"].ToString()); 
                 }
             }
             if (dict.ContainsKey("FYEO_DoB"))
             {
-                if (dict["FYEO_DoB"].ToString() != "")
+                if (dict["FYEO_DoB"] != null && dict["FYEO_DoB"].ToString() != "")
                 {
                     DoB = DateTime.Parse(dict["FYEO_DoB"].ToString());
                 }
             }
             if (dict.ContainsKey("FYEO_Directorate"))
             {
-                Directorate = dict["FYEO_Directorate"].ToString();
+                if (dict["FYEO_Directorate"] != null)
+                {
+                    Directorate = dict["FYEO_Directorate"].ToString();
+                }
             }
             if (dict.ContainsKey("FYEO_Specialty"))
             {
@@ -69,6 +82,34 @@ namespace HR.Data.Models
             if (dict.ContainsKey("HRApp_TitleComputed"))
             {
                 Position = dict["HRApp_TitleComputed"].ToString();
+            }
+            if (dict.ContainsKey("Email"))
+            {
+                email = dict["Email"].ToString();
+            }
+            if (dict.ContainsKey("Seat"))
+            {
+                Seat = dict["Seat"].ToString();
+            }
+            if (dict.ContainsKey("Phone"))
+            {
+                Phone = dict["Phone"].ToString();
+            }
+            if (dict.ContainsKey("HRApp_Teams"))
+            {
+                Teams = new List<Team>();
+                try
+                {
+                    JArray jTeams = (JArray)obj.SelectToken("HRApp_Teams");
+                    foreach (var t in jTeams)
+                    {
+                        Team newTeam = new Team();
+                        newTeam.CreateTeam(t);
+                        Teams.Add(newTeam);
+
+                    }
+                }
+                catch { }
             }
         }
 
@@ -80,6 +121,31 @@ namespace HR.Data.Models
             {
                 photo_blob_html_image = dict["photo_blob_html_image"].ToString();
             }
+        }
+
+        public void GetSupervisor(IEnumerable<Employee> emps)
+        {
+            List<Employee> supervisors = new List<Employee>();
+            foreach (var team in Teams.Where(x=>x.Position != 0))
+            {
+                var tEmps = emps.Where(x => x.Teams.Where(y => y.Name == team.Name).Any()).OrderByDescending(x => x.Teams.Where(y => y.Name == team.Name).Single().Position).First();
+                supervisors.Add(tEmps);
+            }
+            Supervisors = string.Join(",", supervisors.Select(x=>x.FullName).Distinct());
+        }
+
+        public List<int> editors()
+        {
+            var l = new List<int>();
+            l.Add(23);
+            return l;
+        }
+
+        public List<int> hr()
+        {
+            var l = new List<int>();
+            l.Add(99);
+            return l;
         }
     }
 }

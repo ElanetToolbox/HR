@@ -1,5 +1,9 @@
 ﻿@model HR.Data.Models.TextQuestion
-<div>
-    <h4>@Model.text</h4>
-    @Html.TextArea(Model.text,string.Empty,10,155,htmlAttributes: new {style="width: 100%; max-width: 100%;" })
-</div>
+    <div class="panel-default" style="margin-top:10px">
+        <div class="panel-heading">
+            <h4>@Model.text</h4>
+        </div>
+        <div class="panel-body">
+            @Html.TextArea(Model.text, string.Empty, 10, 155, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
+        </div>
+    </div>

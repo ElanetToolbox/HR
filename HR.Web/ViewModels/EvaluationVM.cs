@@ -12,8 +12,9 @@ namespace HR.Web.ViewModels
         public Employee Employee { get; set; }
         public Evaluation Evaluation { get; set; }
 
-        public EvaluationVM(Employee emp,Evaluation eval)
+        public EvaluationVM(Account ev,Employee emp,Evaluation eval)
         {
+            Evaluator = ev;
             Employee = emp;
             Evaluation = eval;
         }

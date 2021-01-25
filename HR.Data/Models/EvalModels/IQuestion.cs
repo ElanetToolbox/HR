@@ -8,5 +8,7 @@ namespace HR.Data.Models
 {
     public interface IQuestion
     {
+        string text { get; set; }
+        string savedvalue { get; set; }
     }
 }

@@ -11,10 +11,10 @@ namespace HR.Data.Models
     {
         public int Order { get; set; }
         public string fullText { get; set; }
-        public string Text { get; set; }
+        public string text { get; set; }
         public string Title { get; set; }
         public List<LinkertOption> options { get; set; }
-        public int savedvalue { get; set; }
+        public string savedvalue { get; set; }
         public string descriptions { get; set; }
 
         public void Create(JObject jQuestion)
@@ -49,7 +49,7 @@ namespace HR.Data.Models
             fullText = fullText.Replace("=>", " ");
             int i = fullText.IndexOf("\n");
             Title = fullText.Substring(0, i+1);
-            Text = fullText.Substring(i+1);
+            text = fullText.Substring(i+1);
         }
         
     }

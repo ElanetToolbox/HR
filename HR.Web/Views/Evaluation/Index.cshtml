@@ -9,12 +9,28 @@
     </td>
 </table>
 
-@foreach (var item in Model.Sections)
+@using (Html.BeginForm())
 {
-    @Html.Partial("_Section", item)
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        @foreach (var item in Model.Sections)
+        {
+            @Html.Partial("_Section", item)
+        }
+    </div>
+
+    @*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Αποθήκευση" class="btn btn-primary" />
+        </div>
+    </div>*@
+
+    <table align="center">
+        <tr>
+            <td>
+                <input type="submit" value="Αποθήκευση" class="btn btn-primary" />
+                @*<input type="submit" value="Υποβολή" class="btn btn-primary" onclick="location.href = '@(Url.Action("Save", "Evaluation"))'" />*@
+            </td>
+        </tr>
+    </table>
 }
-<table align="center">
-    <td>
-        <input type="button" name="submit" value="Υποβολή" onclick="location.href = '@(Url.Action("Index", "Employees"))'"/>
-    </td>
-</table>

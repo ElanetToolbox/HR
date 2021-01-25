@@ -1,23 +1,35 @@
 ﻿@model HR.Data.Models.LinkertQuestion
-<div>
-    <h4>@Model.Title</h4>
-    <h5>@Model.Text</h5>
-    <table border="1" align="center" cellspacing="15" cellpadding="15">
-        <tr>
-            @for (int i = 1; i <= 5; i++)
-            {
-                <td style="padding:5px">@Model.options.Where(x => x.value == i).Single().text</td>
-            }
-            <td rowspan="2">
-                <i class="fa fa-info-circle" title="@Model.descriptions" style="font-size:20px"/>
-            @*<button type="button" title="@Model.descriptions" style="background-color:transparent;outline-color:transparent" data-url="@Url.Action("ShowInfo")" >i</button>*@
-            </td>
-        </tr>
-        <tr>
-            @for (int i = 1; i <= 5; i++)
-            {
-                <td align="center">@Html.RadioButton(Model.Text, i.ToString())</td>
-            }
-        </tr>
-    </table>
-</div>
+        <div class="panel-default" style="margin-top:10px">
+            <div class="panel-heading">
+                <h4>@Model.Title</h4>
+            </div>
+            <div class="panel-body">
+                <h5 style="line-height:20px;">@Model.text</h5>
+                <table align="center" cellspacing="15" cellpadding="15">
+                    <tr>
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <td style="padding:5px">@Model.options.Where(x => x.value == i).Single().text</td>
+                        }
+                        <td rowspan="2">
+                            <i class="fa fa-info-circle" title="@Model.descriptions" style="font-size:20px;color:#30889c;padding-left:20px;" />
+                        </td>
+                    </tr>
+                    <tr>
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <td align="center">
+                                @if (Model.savedvalue == i.ToString())
+                                {
+                                    <input type="radio" name="@Model.text" checked="checked" value="@i"/>
+                                }
+                                else
+                                {
+                                    <input type="radio" name="@Model.text"  value="@i"/>
+                                }
+                            </td>
+                        }
+                    </tr>
+                </table>
+            </div>
+        </div>

@@ -21,6 +21,8 @@ namespace HR.Web.Controllers
         [HttpPost]
         public ActionResult Verify(Account acc)
         {
+            ViewBag.Session = new SessionData();
+            Functions.Emps = ViewBag.Session.Emps;
             api = new ApiLoginData();
             if (acc.Username == "1" && acc.Password == "1")
             {
@@ -29,9 +31,19 @@ namespace HR.Web.Controllers
             else
             {
                 var user = api.GetUser(acc.Username, acc.Password);
-                Functions.Emps = user.Employees;
-                return RedirectToAction("Index", "Employees");
+                ViewBag.Session.User = new ApiEmpData().Get(user.ID);
+                Employee currentUser = ViewBag.Session.User;
+                //Functions.User = ViewBag.Session.User;
+                if(currentUser.Teams.Where(x=>x.Position > 60).Any())
+                {
+                    ViewBag.Session.GetSubordinates();
+                    ViewBag.Session.GetUnderlings();
+                    Functions.GetSubordinates();
+                    Functions.GetUnderlings();
+                    return RedirectToAction("Index", "Employees");
+                }
             }
+            return null;
         }
     }
 }
