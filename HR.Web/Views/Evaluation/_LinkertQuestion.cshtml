@@ -7,25 +7,28 @@
                 <h5 style="line-height:20px;">@Model.text</h5>
                 <table align="center" cellspacing="15" cellpadding="15">
                     <tr>
-                        @for (int i = 1; i <= 5; i++)
+                        @for (int i = 1; i <= Model.options.Count; i++)
                         {
-                            <td style="padding:5px">@Model.options.Where(x => x.value == i).Single().text</td>
+                            string text = Model.options.Where(x => x.value == i).Single().text;
+                            int tCount = Model.options.Where(x => x.text == text).Count();
+                            <td style="padding:5px" width="70px" align="center">@i</td>
                         }
                         <td rowspan="2">
                             <i class="fa fa-info-circle" title="@Model.descriptions" style="font-size:20px;color:#30889c;padding-left:20px;" />
                         </td>
                     </tr>
                     <tr>
-                        @for (int i = 1; i <= 5; i++)
+                        @for (int i = 1; i <= Model.options.Count; i++)
                         {
+                            string title = Model.options.Where(x => x.value == i).Single().description;
                             <td align="center">
                                 @if (Model.savedvalue == i.ToString())
                                 {
-                                    <input type="radio" name="@Model.text" checked="checked" value="@i"/>
+                                    <input type="radio" title="@title" name="@Model.text" checked="checked" @Html.Raw(ViewBag.Disabled) value="@i"/>
                                 }
                                 else
                                 {
-                                    <input type="radio" name="@Model.text"  value="@i"/>
+                                    <input title="@title" type="radio" name="@Model.text" @Html.Raw(ViewBag.Disabled) value="@i"/>
                                 }
                             </td>
                         }

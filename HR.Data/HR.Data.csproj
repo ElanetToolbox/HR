@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IronXL, Version=2020.12.2.0, Culture=neutral, PublicKeyToken=0f5804b6690bad1e, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronXL.Excel.2020.12.2\lib\net45\IronXL.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -38,6 +41,7 @@
       <HintPath>..\packages\RestSharp.106.11.5\lib\net452\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +56,7 @@
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeModels\Department.cs" />
+    <Compile Include="Models\EmployeeModels\MapRef.cs" />
     <Compile Include="Models\EmployeeModels\Position.cs" />
     <Compile Include="Models\EmployeeModels\Team.cs" />
     <Compile Include="Models\Employees.cs" />
@@ -59,8 +64,10 @@
     <Compile Include="Models\EvalModels\IQuestion.cs" />
     <Compile Include="Models\EvalModels\LinkertOption.cs" />
     <Compile Include="Models\EvalModels\LinkertQuestion.cs" />
+    <Compile Include="Models\EvalModels\ScoreTableEntry.cs" />
     <Compile Include="Models\EvalModels\TextQuestion.cs" />
     <Compile Include="Models\Evaluation.cs" />
+    <Compile Include="Models\Upload\Upload_Evaluation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApiEmpData.cs" />
     <Compile Include="Services\ApiEvaluationData.cs" />

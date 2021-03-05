@@ -17,32 +17,30 @@
                     <div class="panel-body">
                         <dl class="dl-horizontal">
                             <dt>
-                                <i class="fa fa-thumb-tack" title="Θέση" style="font-size:20px" ></i>
+                                <i class="fa fa-thumb-tack" title="Θέση" style="font-size:20px"></i>
                             </dt>
                             <dd>
                                 @Html.DisplayFor(model => model.Seat)
                             </dd>
                             <dt>
-                                <i class="fa fa-envelope" title="e-mail" style="font-size:20px" ></i>
+                                <i class="fa fa-envelope" title="e-mail" style="font-size:20px"></i>
                             </dt>
                             <dd>
                                 @Html.DisplayFor(model => model.email)
                             </dd>
                             <dt>
-                                <i class="fa fa-phone-square" title="Τηλέφωνο" style="font-size:23px" ></i>
+                                <i class="fa fa-phone-square" title="Τηλέφωνο" style="font-size:23px"></i>
                             </dt>
                             <dd>
                                 @Html.DisplayFor(model => model.Phone)
                             </dd>
                             <dt>
-                                <i class="fa fa-bullhorn" title="Αναφέρεται σε" style="font-size:23px" ></i>
+                                <i class="fa fa-bullhorn" title="Αναφέρεται σε" style="font-size:23px"></i>
                             </dt>
                             <dd>
                                 @Html.DisplayFor(model => model.Supervisors)
                             </dd>
-
                         </dl>
-
                     </div>
                 </div>
             </td>
@@ -107,12 +105,48 @@
                 </dl>
             </td>
         </tr>
+        @if (Model.Evaluations.Count > 0)
+        {
+            <tr>
+                <td colspan="2">
+                    <table class="table">
+                        <tr>
+                            <th>Αξιολογητής</th>
+                            <th>Ημ/Νία</th>
+                            <th>Βαθμός</th>
+                            <th></th>
+                        </tr>
+                        @foreach (var e in Model.Evaluations)
+                        {
+                            <tr>
+                                <td>@Functions.Emps.Where(x => x.ID == e.EvaluatorID).Single().FullName</td>
+                                <td>@e.Date.ToString("dd/MM/yyyy")</td>
+                                <td>@e.GetScore().ToString() (@e.GetScoreText())</td>
+                                <td>
+                                    @if (Functions.Subordinates.Where(x => x.ID == Model.ID).Any() && e.EvaluatorID == Functions.User.ID)
+                                    {
+                                        <i class="fa fa-edit" title="Επεξεργασία" style="font-size:20px" onclick="location.href = '@(Url.Action("Index", "Evaluation", new { id = Model.ID, evalID = e.EvalID }))'"></i>
+                                    }
+                                    @if (Functions.User.isHR)
+                                    {
+                                        <i class="fa fa-eye" title="Προβολή" style="font-size:20px" onclick="location.href = '@(Url.Action("Index", "Evaluation", new { id = Model.ID, evalID = e.EvalID, view = true }))'"></i>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        }
     </table>
 </div>
 <p>
-    <input onclick="location.href='@Url.Action("Edit", "Employees", new { id = Model.ID })'" value="Επεξεργασία" class="btn btn-primary" />
-    @if (Functions.Subordinates.Where(x=>x.ID==Model.ID).Any())
+    @if (Functions.User.isEditor)
     {
-        <input onclick="location.href='@Url.Action("Index", "Evaluation")'" value="Αξιολόγηση" class="btn btn-primary" />
+        <input onclick="location.href='@Url.Action("Edit", "Employees", new { id = Model.ID })'" value="Επεξεργασία" class="btn btn-primary" />
+    }
+    @if (Functions.Subordinates.Where(x => x.ID == Model.ID).Any() && Model.Evaluations.Where(x => x.EvaluatorID == Functions.User.ID).Count() == 0)
+    {
+        <input onclick="location.href='@Url.Action("Index", "Evaluation", new { id = Model.ID})'" value="Αξιολόγηση" class="btn btn-primary" />
     }
 </p>

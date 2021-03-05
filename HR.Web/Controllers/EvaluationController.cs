@@ -17,28 +17,63 @@ namespace HR.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int id,int evalID = 0 ,bool view = false)
         {
-            var model = db.GetClearEval();
+            var emp = Functions.Emps.Where(x => x.ID == id).FirstOrDefault();
+            Evaluation model;
+            if (view)
+            {
+                ViewBag.Disabled = "disabled";
+            }
+            if(evalID == 0)
+            {
+                //model = db.GetClearEval();
+                model = db.GetTemplate();
+                model.EvaluatorID = Functions.User.ID;
+                model.EvalueeID = id;
+            }
+            else
+            {
+                model = db.GetByID(evalID);
+            }
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult IndexError(Evaluation eval)
+        {
+            ViewBag.Error = true;
+            return View(eval);
         }
 
         [HttpPost]
         public ActionResult Index(Evaluation eval)
         {
             var z = Request.Form;
-            var model = db.GetClearEval();
+            var model = eval;
+            var clearEval = db.GetClearEval();
+            model.ScoreTable = clearEval.ScoreTable;
+            model.Sections = clearEval.Sections;
+            model.EvalueeID = eval.EvalueeID;
+            model.EvaluatorID = eval.EvaluatorID;
             model.FillFromForm(z);
-            var d = model.isComplete();
+            model.Date = DateTime.Now;
             if (model.isComplete())
             {
-                return RedirectToAction("Index", "Employees");
+                if (eval.EvalID == 0)
+                {
+                    db.UploadEval(model);
+                }
+                else
+                {
+                    db.UpdateEval(model);
+                }
+                return RedirectToAction("Details", "Employees", new { id = model.EvalueeID });
             }
             else
             {
-                return View(model);
+                return IndexError(model);
             }
-            //return View(model);
         }
     }
 }

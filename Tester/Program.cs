@@ -14,6 +14,7 @@ using Newtonsoft.Json.Linq;
 using System.Dynamic;
 using Newtonsoft.Json.Converters;
 using RestSharp;
+using IronXL;
 
 namespace Tester
 {
@@ -22,10 +23,20 @@ namespace Tester
         static void Main(string[] args)
         {
             ApiEmpData api = new ApiEmpData();
-            var emps = api.GetAll();
-            var z = emps.Where(x=>x.DateHired != null).OrderBy(x => x.DateHired);
-            //var myEmp = emps.Where(x => x.ID == 7).Single();
-            //myEmp.GetSupervisor(emps);
+            Employee e = api.Get(12);
+            string s = e.TeamsString();
+            //Evaluation newEval = new Evaluation();
+
+            //newEval.CreateFromExcel(@"C:\Users\chatziparadeisis.i\Documents\temp_test.xlsx");
+
+            //newEval.templatedata = new templatedata();
+            //newEval.templatedata.Type = 1;
+            //newEval.templatedata.Cycle = "2020";
+            //newEval.templatedata.Criteria = "1,2,3";
+
+            //api.UploadEvaluationTemplate(newEval);
+
+
         }
 
     }

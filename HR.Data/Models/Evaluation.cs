@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using IronXL;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -10,8 +12,15 @@ namespace HR.Data.Models
 {
     public class Evaluation
     {
+        public int EvalID { get; set; }
         public List<EvalSection> Sections { get; set; }
-        public Employee Employee { get; set; }
+        public int EvaluatorID { get; set; }
+        public int EvalueeID { get; set; }
+        public DateTime Date { get; set; }
+        public List<ScoreTableEntry> ScoreTable { get; set; }
+        public bool isNew { get; set; }
+        public personaldata personaldata { get; set; }
+        public templatedata templatedata { get; set; }
 
         public void CreateSections(JArray jSections)
         {
@@ -22,12 +31,23 @@ namespace HR.Data.Models
                 newSection.Create((JObject)s);
                 Sections.Add(newSection);
             }
-            int x = 1;
+        }
+
+        public void CreateScoreTable(JArray entries)
+        {
+            ScoreTable = new List<ScoreTableEntry>();
+            foreach (JObject entry in entries)
+            {
+                ScoreTableEntry newEntry = new ScoreTableEntry();
+                newEntry.Min = float.Parse(entry.SelectToken("minvalue").ToString());
+                newEntry.Max = float.Parse(entry.SelectToken("maxvalue").ToString());
+                newEntry.Text = entry.SelectToken("scoretext").ToString();
+                ScoreTable.Add(newEntry);
+            }
         }
 
         public void FillFromForm(NameValueCollection form)
         {
-            var test = form.AllKeys;
             foreach (var section in Sections)
             {
                 foreach (var q in section.questions)
@@ -52,5 +72,89 @@ namespace HR.Data.Models
             }
             return true;
         }
+
+        public float GetScore()
+        {
+            float fullGrade = 0;
+            foreach (var s in Sections.Where(x=>x.SectionType != "text")) 
+            {
+                var sum = s.questions.Sum(x => x.savedvalue != null ? int.Parse(x.savedvalue) : 0);
+                var final = sum * s.Weight / s.questions.Count();
+                fullGrade += final;
+            }
+            return fullGrade;
+        }
+
+        public string GetScoreText()
+        {
+            return ScoreTable.Where(x => GetScore() >= x.Min).Where(x => GetScore() <= x.Max).Single().Text;
+        }
+
+        public string GetJson()
+        {
+            personaldata = new personaldata("2020", EvalueeID, EvaluatorID);
+            var settings = new JsonSerializerSettings();
+            settings.TypeNameHandling = TypeNameHandling.Auto;
+            string json = JsonConvert.SerializeObject(this,settings);
+            var x = json.Length;
+            return json;
+        }
+
+        public void CreateFromExcel(string path)
+        {
+            Sections = new List<EvalSection>();
+
+            WorkBook wb = WorkBook.LoadExcel(path);
+            WorkSheet infoSheet = wb.GetWorkSheet("Sections");
+
+            var d = infoSheet.Columns[0].Rows.ToList();
+            d.Remove(d.First());
+            d.RemoveAll(x=>x.Int32Value == 0);
+
+            int i = 1;
+            foreach (var number in d)
+            {
+                EvalSection section = new EvalSection();
+                section.Order = infoSheet.GetCellAt(i,0).Int32Value;
+                section.Title = infoSheet.GetCellAt(i, 1).StringValue;
+                section.SectionType = Functions.GetSectionType(infoSheet.GetCellAt(i, 2).StringValue);
+                section.Weight = infoSheet.GetCellAt(i, 3).FloatValue;
+                section.CreateFromExcel(wb.GetWorkSheet(section.Title));
+                Sections.Add(section);
+                i++;
+            }
+
+            ScoreTable = new List<ScoreTableEntry>();
+            WorkSheet scoreSheet = wb.GetWorkSheet("ScoreBoard");
+            d = scoreSheet.Columns[0].Rows.ToList();
+            d.Remove(d.First());
+            i = 1;
+            foreach (var item in d)
+            {
+                ScoreTableEntry newScore = new ScoreTableEntry();
+                newScore.Min = scoreSheet.GetCellAt(i, 0).FloatValue;
+                newScore.Max = scoreSheet.GetCellAt(i, 1).FloatValue;
+                newScore.Text = scoreSheet.GetCellAt(i, 2).StringValue;
+                ScoreTable.Add(newScore);
+                i++;
+            }
+        }
     }
+
+    public class personaldata
+    {
+        public string Year { get; set; }
+        public bool isMidTerm { get; set; }
+        public int EmployeeID { get; set; }
+        public int EvaluatorID { get; set; }
+
+        public personaldata(string year,int empID,int evID,bool mT = false)
+        {
+            Year = year;
+            EmployeeID = empID;
+            EvaluatorID = evID;
+            isMidTerm = mT;
+        }
+    }
+
 }

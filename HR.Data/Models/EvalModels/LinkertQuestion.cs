@@ -17,7 +17,7 @@ namespace HR.Data.Models
         public string savedvalue { get; set; }
         public string descriptions { get; set; }
 
-        public void Create(JObject jQuestion)
+        public void CreateOld(JObject jQuestion)
         {
             options = new List<LinkertOption>();
             Order = (int)jQuestion.SelectToken("order");
@@ -35,13 +35,21 @@ namespace HR.Data.Models
 
         public void setDesc()
         {
-            int i = 1;
+            //int i = 1;
             descriptions = "";
-            foreach (var opt in options)
+            for (int j = 1; j <= options.Count; j++)
             {
-                descriptions += i.ToString() + " - " + opt.description + "\n";
-                i++;
+                string currentDesc = options.Where(x => x.value == j).Single().text;
+                List<LinkertOption> sameOptions = options.Where(x => x.text == currentDesc).ToList();
+                string numbers = string.Join(",",sameOptions.Select(x=>x.value.ToString()));
+                descriptions += numbers + " - " + currentDesc + "\n";
+                j += sameOptions.Count() - 1;
             }
+            //foreach (var opt in options)
+            //{
+            //    descriptions += i.ToString() + " - " + opt.description + "\n";
+            //    i++;
+            //}
         }
 
         public void SplitText()

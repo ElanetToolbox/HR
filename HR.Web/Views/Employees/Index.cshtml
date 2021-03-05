@@ -1,10 +1,9 @@
-﻿@model IEnumerable<HR.Data.Models.Employee>
-
-@{
+﻿@{ 
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Προσωπικό</h2>
+@model IEnumerable<HR.Data.Models.Employee>
+<h2>@ViewBag.Title</h2>
 
 <table class="table">
     <tr>

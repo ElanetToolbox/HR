@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using HR.Web.Filters;
+using System.Web;
 using System.Web.Mvc;
 
 namespace HR.Web
@@ -8,6 +9,7 @@ namespace HR.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new CheckLoginFilter());
         }
     }
 }

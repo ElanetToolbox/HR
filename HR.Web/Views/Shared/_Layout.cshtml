@@ -6,20 +6,19 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/fontawesome")
+    @Styles.Render("~/Content/fontawesome/font-awesome.css")
     @Styles.Render("~/styles/style.css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/erroralert.js")
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" style="background:#42aac3">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <img src="~/Content/Images/circle.png" height="40" />
-                <img src="~/Content/Images/logotxt.png" height="40" style="padding-top:10px"/>
+                <img src="~/Content/Images/logotxt.png" height="40" style="padding-top:10px" />
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -28,6 +27,11 @@
                     <li class="navbar-li">@Html.ActionLink("Άδειες", "Index", "Employees")</li>
                     <li class="navbar-li">@Html.ActionLink("Αναφορές", "Index", "Employees")</li>
                     <li class="navbar-li">@Html.ActionLink("Αιτήσεις", "Index", "Employees")</li>
+                </ul>
+                <ul class="nav navbar-nav" style="float:right;padding-top:3px">
+                    <li class="navbar-li">
+                        <i class="fa fa-sign-out" title="Αποσύνδεση" style="font-size:40px;color:whitesmoke" onclick="location.href='@Url.Action("Login", "Account")'"></i>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -38,9 +42,5 @@
             <p></p>
         </footer>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

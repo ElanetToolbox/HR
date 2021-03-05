@@ -18,5 +18,18 @@ namespace HR.Data
 
             return age;
         }
+
+        public static string GetSectionType(string cellValue)
+        {
+            switch (cellValue)
+            {
+                case "Linkert":
+                    return "matrix";
+                case "Text":
+                    return "text";
+                default:
+                    return "";
+            }
+        }
     }
 }

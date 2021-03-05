@@ -12,6 +12,7 @@ namespace HR.Data.Services
         IEnumerable<Employee> GetMany(string IDs);
         Employee Get(int ID);
         void Save(Employees emps);
+        void UpdateEmployee(Employee emp);
         IEnumerable<Position> GetPositions();
         IEnumerable<Department> GetDepartments();
     }

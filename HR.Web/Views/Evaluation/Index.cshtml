@@ -4,13 +4,27 @@
     ViewBag.Title = "Index";
 }
 <table align="center">
-    <td>
+    <th>
         <h2>Αξιολόγηση 2020</h2>
-    </td>
+    </th>
 </table>
 
-@using (Html.BeginForm())
+@if (ViewBag.Error != null)
 {
+    <input type="hidden" id="evalErrorControl"/>
+}
+
+@using (Html.BeginForm(null,null,FormMethod.Post,new { id="evalform"}))
+{
+    <div hidden="hidden">
+        @Html.EditorForModel()
+        @for (int i = 0; i < Model.ScoreTable.Count; i++)
+        {
+            Html.EditorFor(Model => Model.ScoreTable[i].Min);
+            Html.EditorFor(Model => Model.ScoreTable[i].Max);
+            Html.EditorFor(Model => Model.ScoreTable[i].Text);
+        }
+    </div>
     @Html.AntiForgeryToken()
     <div class="form-group">
         @foreach (var item in Model.Sections)
@@ -19,17 +33,17 @@
         }
     </div>
 
-    @*<div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Αποθήκευση" class="btn btn-primary" />
-        </div>
-    </div>*@
-
     <table align="center">
         <tr>
             <td>
-                <input type="submit" value="Αποθήκευση" class="btn btn-primary" />
-                @*<input type="submit" value="Υποβολή" class="btn btn-primary" onclick="location.href = '@(Url.Action("Save", "Evaluation"))'" />*@
+                @if (ViewBag.Disabled == "disabled")
+                {
+                    <input type="button" value="Επιστροφή" class="btn btn-primary" onclick="location.href = '@(Url.Action("Details", "Employees", new { id = Model.EvalueeID }))'"/>
+                }
+                else
+                {
+                    <input type="submit" id="submitBtn" value="Αποθήκευση" class="btn btn-primary"/>
+                }
             </td>
         </tr>
     </table>

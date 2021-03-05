@@ -1,11 +1,8 @@
 ﻿
 body {
-    background: rgba(0, 0, 0, 0) url("../../Content/Images/wavebg.png") repeat scroll 0% 0%;
-    /*background-image: url("../../Content/Images/wavebg.png");
-    background-size: 50px;
-    background-size: cover;
-    background-repeat: repeat;*/
+    background: rgba(0, 0, 0, 0) url("../../Content/Images/paperbg.png") repeat scroll 0% 0%;
 }
+
 .navbar-inverse .navbar-nav > li > a {
   color: #ffffff;
 }

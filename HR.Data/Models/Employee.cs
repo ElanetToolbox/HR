@@ -14,6 +14,7 @@ namespace HR.Data.Models
         public int ID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
+        public string FullName { get; set; }
         public DateTime? DateHired { get; set; }
         public DateTime? DoB { get; set; }
         public string Directorate { get; set; }
@@ -28,15 +29,20 @@ namespace HR.Data.Models
         public string Seat { get; set; }
         public string Phone { get; set; }
         public string Supervisors { get; set; }
+        public string MapRef { get; set; }
+        public string floor => string.IsNullOrWhiteSpace(MapRef) ? "" : MapRef.Split('-')[0];
+        public string room => string.IsNullOrWhiteSpace(MapRef) ? "" : MapRef.Split('-')[1];
+        public string spot => string.IsNullOrWhiteSpace(MapRef) ? "" : MapRef.Split('-')[2];
         public bool isEditor => editors().Contains(ID);
         public bool isHR => hr().Contains(ID);
+        public string SpecialPosition { get; set; }
 
         public List<Evaluation> Evaluations { get; set; }
 
         [JsonIgnore]
         public int Age => DoB == null ? 0 : Functions.GetAge(DoB.Value);
-        [JsonIgnore]
-        public string FullName => LastName + " " + FirstName;
+        //[JsonIgnore]
+        //public string FullName => LastName + " " + FirstName;
 
         public void FromJobjectSimple(JObject obj)
         {
@@ -95,6 +101,29 @@ namespace HR.Data.Models
             {
                 Phone = dict["Phone"].ToString();
             }
+            if (dict.ContainsKey("HRApp_Special_Position"))
+            {
+                try
+                {
+                    SpecialPosition = dict["HRApp_Special_Position"].ToString();
+                }
+                catch { SpecialPosition = ""; }
+            }
+            if (dict.ContainsKey("MapRef"))
+            {
+                try
+                {
+                    MapRef = dict["MapRef"].ToString();
+                }
+                catch
+                {
+                    MapRef = "";
+                }
+            }
+            if (dict.ContainsKey("FriendlyFullname"))
+            {
+                FullName = dict["FriendlyFullname"].ToString();
+            }
             if (dict.ContainsKey("HRApp_Teams"))
             {
                 Teams = new List<Team>();
@@ -113,6 +142,22 @@ namespace HR.Data.Models
             }
         }
 
+        public string TeamsString()
+        {
+            string teams = "";
+            int i = 0;
+            foreach (var t in Teams)
+            {
+                if (i > 0)
+                {
+                    teams += "+";
+                }
+                teams += t.Position + "@[" + t.Name+"]";
+                i++;
+            }
+            return teams;
+        }
+
         public void FromJobjectFull(JObject obj)
         {
             FromJobjectSimple(obj);
@@ -128,7 +173,7 @@ namespace HR.Data.Models
             List<Employee> supervisors = new List<Employee>();
             foreach (var team in Teams.Where(x=>x.Position != 0))
             {
-                var tEmps = emps.Where(x => x.Teams.Where(y => y.Name == team.Name).Any()).OrderByDescending(x => x.Teams.Where(y => y.Name == team.Name).Single().Position).First();
+                var tEmps = emps.Where(x => x.Teams.Where(y => y.Name == team.Name).Any()).OrderByDescending(x => x.Teams.Where(y => y.Name == team.Name).First().Position).First();
                 supervisors.Add(tEmps);
             }
             Supervisors = string.Join(",", supervisors.Select(x=>x.FullName).Distinct());
