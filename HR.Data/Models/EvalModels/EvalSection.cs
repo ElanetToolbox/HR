@@ -12,6 +12,7 @@ namespace HR.Data.Models
     {
         public int Order { get; set; }
         public string Title { get; set; }
+        public string Header => GetHeader();
         public string SectionType { get; set; }
         public float Weight { get; set; }
         public float Grade { get; set; }
@@ -49,6 +50,15 @@ namespace HR.Data.Models
             }
         }
 
+        private string GetHeader()
+        {
+            if(Weight > 0)
+            {
+                return Title + " (" + Weight * 100 + "%)";
+            }
+            return Title;
+        }
+
         public void CreateFromExcel(WorkSheet sheet)
         {
             questions = new List<IQuestion>();
@@ -64,6 +74,7 @@ namespace HR.Data.Models
                 {
                     case "matrix":
                         var lq = new LinkertQuestion();
+                        lq.Order = 1;
                         lq.options = new List<LinkertOption>();
                         lq.Title = sheet.GetCellAt(i, 1).StringValue;
                         lq.text = sheet.GetCellAt(i, 2).StringValue;
@@ -96,6 +107,10 @@ namespace HR.Data.Models
                         questions.Add(lq);
                         break;
                     case "text":
+                        var tq = new TextQuestion();
+                        tq.order = i;
+                        tq.text = sheet.GetCellAt(i, 1).StringValue;
+                        questions.Add(tq);
                         break;
                     default:
                         break;

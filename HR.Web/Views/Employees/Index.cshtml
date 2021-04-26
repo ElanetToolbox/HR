@@ -1,5 +1,5 @@
 ﻿@{ 
-    ViewBag.Title = "Index";
+    //ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model IEnumerable<HR.Data.Models.Employee>
@@ -23,7 +23,7 @@
             Διεύθυνση
         </th>
         <th>
-            Είδικότητα
+            Ειδικότητα
         </th>
         <th>
             Θέση
@@ -31,9 +31,18 @@
         <th></th>
     </tr>
 @{int i = 1;
-foreach (var item in Model.OrderBy(x=>x.LastName))
-{
-    <tr onclick="location.href = '@(Url.Action("Details", "Employees", new { id = item.ID }))'">
+    foreach (var item in Model.OrderBy(x=>x.LastName))
+    {
+        string color;
+        if (item.isEvaluated)
+        {
+            color = "palegreen";
+        }
+        else
+        {
+            color = "transparent";
+        }
+    <tr onclick="location.href = '@(Url.Action("Details", "Employees", new { id = item.ID }))'" bgcolor="@color"} style="cursor:pointer">
         <td>
             @i
         </td>

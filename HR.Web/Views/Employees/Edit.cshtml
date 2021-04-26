@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "Edit";
+    rContext currentContext = Session[nameof(currentContext)] as rContext;
 }
 
 <h2>Edit</h2>
@@ -56,7 +57,14 @@
         <div class="form-group">
             @Html.Label("Ημ/νία Γέννησης", htmlAttributes: new { @class = "control-label col-md-3" })
             <div class="col-md-9">
-                <input type="date" name="DoB" class="form-control" value="@Model.DoB.Value.Date.ToString("yyyy-MM-dd")">
+                @if (Model.DoB != null)
+                {
+                    <input type="date" name="DoB" class="form-control" value="@Model.DoB.Value.Date.ToString("yyyy-MM-dd")">
+                }
+                else
+                {
+                    <input type="date" name="DoB" class="form-control">
+                }
             </div>
         </div>
 
@@ -101,7 +109,7 @@
             </div>
         </div>
 
-        @if (Functions.User.isHR)
+        @if (currentContext.User.isHR)
         {
             <div class="form-group">
                 @Html.Label("Μικτά", htmlAttributes: new { @class = "control-label col-md-3" })

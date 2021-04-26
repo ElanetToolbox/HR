@@ -13,6 +13,7 @@ namespace HR.Data.Models
     public class Evaluation
     {
         public int EvalID { get; set; }
+        public int TemplateID { get; set; }
         public List<EvalSection> Sections { get; set; }
         public int EvaluatorID { get; set; }
         public int EvalueeID { get; set; }
@@ -64,7 +65,7 @@ namespace HR.Data.Models
             {
                 foreach (var q in section.questions)
                 {
-                    if(q.savedvalue == null)
+                    if(q.savedvalue == null || string.IsNullOrWhiteSpace(q.savedvalue))
                     {
                         return false;
                     }

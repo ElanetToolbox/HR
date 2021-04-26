@@ -154,5 +154,21 @@ namespace HR.Data.Services
 
             return GetFromToken(x);
         }
+
+        public Evaluation GetTemplateById(int id)
+        {
+            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/templates/");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("criteria", "TemplID="+id.ToString());
+            IRestResponse response = client.Execute(request);
+            string result = response.Content;
+            JObject eval = (JObject)JsonConvert.DeserializeObject(result);
+            var d = (JArray)JsonConvert.DeserializeObject(eval.SelectToken("Templates").ToString());
+            var x = d.First();
+
+            return GetFromToken(x);
+        }
     }
 }

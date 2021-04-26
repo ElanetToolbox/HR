@@ -1,4 +1,7 @@
 ﻿<!DOCTYPE html>
+@{ 
+    rContext currentContext = Session[nameof(currentContext)] as rContext;
+}
 <html>
 <head>
     <meta charset="utf-8" />
@@ -22,15 +25,19 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="navbar-li">@Html.ActionLink("Προσωπικό", "Index", "Employees")</li>
-                    <li class="navbar-li">@Html.ActionLink("Αξιολογήσεις", "Evaluation", "Employees")</li>
+                    <li class="navbar-li">@Html.ActionLink("Προφίλ", "Details", "Employees")</li>
+                    @if (currentContext.Underlings.Count > 0)
+                    {
+                        <li class="navbar-li">@Html.ActionLink("Προσωπικό", "Index", "Employees")</li>
+                        <li class="navbar-li">@Html.ActionLink("Αξιολογήσεις", "Evaluation", "Employees")</li>
+                    }
                     <li class="navbar-li">@Html.ActionLink("Άδειες", "Index", "Employees")</li>
                     <li class="navbar-li">@Html.ActionLink("Αναφορές", "Index", "Employees")</li>
                     <li class="navbar-li">@Html.ActionLink("Αιτήσεις", "Index", "Employees")</li>
                 </ul>
                 <ul class="nav navbar-nav" style="float:right;padding-top:3px">
                     <li class="navbar-li">
-                        <i class="fa fa-sign-out" title="Αποσύνδεση" style="font-size:40px;color:whitesmoke" onclick="location.href='@Url.Action("Login", "Account")'"></i>
+                        <i class="fa fa-sign-out" title="Αποσύνδεση" style="font-size:40px;color:whitesmoke;cursor:pointer" onclick="location.href='@Url.Action("Login", "Account")'"></i>
                     </li>
                 </ul>
             </div>

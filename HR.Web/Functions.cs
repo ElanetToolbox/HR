@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +13,7 @@ namespace HR.Web
 {
     public static class Functions
     {
+        public static NumberFormatInfo decimalFormat => GetDecimalFormat();
         public static string GetFileNameFromPath(string fName)
         {
             return Path.GetFileName(fName);
@@ -57,75 +59,14 @@ namespace HR.Web
             l.Add(new KeyValuePair<string,string>("Rec","Γραμματεία"));
             return l;
         }
-
-        public static void GetSubordinates()
+        
+        public static List<int> BaseEvalIDs()
         {
-            Subordinates = new List<Employee>();
-            if (User.isHR)
-            {
-                return;
-            }
-            foreach (var team in User.Teams)
-            {
-                if (team.Position < 70)
-                {
-                    break;
-                }
-                if (team.Position >= 70 && team.Position < 90)
-                {
-                    var z = Emps.Where(x=>x.ID != User.ID).Where(x => x.Teams.Where(y => y.Name == team.Name).Where(y => y.Position < team.Position).Any()).ToList();
-                    Subordinates.AddRange(z);
-                }
-                else if (team.Position >=90 && team.Position<99)
-                {
-                    var z = Emps.Where(x=>x.ID != User.ID).Where(x=>x.Directorate == User.Directorate).Where(x => x.Teams.Where(y=> y.Position >= 70).Any()).ToList();
-                    Subordinates.AddRange(z);
-                }
-                else
-                {
-                    var z = Emps.Where(x=>x.ID != User.ID).Where(x => x.Teams.Where(y => y.Position >=90 && y.Position != 99).Any()).ToList();
-                    Subordinates.AddRange(z);
-                }
-            }
-            Subordinates = Subordinates.Distinct().ToList();
-        }
-
-        public static void GetUnderlings()
-        {
-            Underlings = new List<Employee>();
-            if (User.isHR || User.isEditor)
-            {
-                Underlings = Emps;
-                return;
-            }
-            foreach (var team in User.Teams)
-            {
-                if (team.Position < 70)
-                {
-                    break;
-                }
-                if (team.Position >= 70 && team.Position < 90)
-                {
-                    Underlings = Subordinates;
-                }
-                else if (team.Position >=90 && team.Position<99)
-                {
-                    var z = Emps.Where(x=>x.ID != User.ID).Where(x=>x.Directorate == User.Directorate).ToList();
-                    Underlings.AddRange(z);
-                }
-                else
-                {
-                    Underlings = Emps.Where(x=>x.ID != User.ID).ToList();
-                }
-            }
-            Subordinates = Subordinates.Distinct().ToList();
-        }
-
-        public static string GetEvalTemplateCriteria()
-        {
-            string criteria = "";
-
-            return criteria;
+            List<int> l = new List<int>();
+            l.Add(8);
+            l.Add(9);
+            l.Add(10);
+            return l;
         }
 
         public static DateTime DateFromInput(string input)
@@ -133,14 +74,32 @@ namespace HR.Web
             input = input.Substring(input.IndexOf(',') + 1);
             return DateTime.ParseExact(input, "yyyy-MM-dd", CultureInfo.CurrentCulture);;
         }
+        
+        public static int GetTemplateID(Employee emp,Employee eval)
+        {
+            if(emp.Teams.Where(x=>x.Name == "SYST3").Any())
+            {
+                return 10;
+            }
+            if(emp.Teams.Where(x=>x.Position >= 70 || x.Position == 60.1 || x.Position==60.2).Any())
+            {
+                return 9;
+            }
+            return 8;
+        }
 
-        public static Employee User;
-        public static List<Employee> Underlings;
-        public static List<Employee> Subordinates;
-        public static List<Employee> Emps;
+        public static List<float> FixPositionArray(Array pos)
+        {
+            List<float> result = new List<float>();
+            return result;
+        }
 
-        public static List<Position> Positions;
-        public static List<Department> Departments;
+        private static NumberFormatInfo GetDecimalFormat()
+        {
+            NumberFormatInfo result = new NumberFormatInfo();
+            result.NumberDecimalSeparator = ".";
+            return result;
+        }
 
     }
 }

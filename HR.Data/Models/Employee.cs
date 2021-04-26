@@ -28,16 +28,21 @@ namespace HR.Data.Models
         public string email { get; set; }
         public string Seat { get; set; }
         public string Phone { get; set; }
-        public string Supervisors { get; set; }
+        public string SupervisorString { get; set; }
         public string MapRef { get; set; }
+        public bool isActive { get; set; }
         public string floor => string.IsNullOrWhiteSpace(MapRef) ? "" : MapRef.Split('-')[0];
         public string room => string.IsNullOrWhiteSpace(MapRef) ? "" : MapRef.Split('-')[1];
         public string spot => string.IsNullOrWhiteSpace(MapRef) ? "" : MapRef.Split('-')[2];
         public bool isEditor => editors().Contains(ID);
         public bool isHR => hr().Contains(ID);
+        public bool isDirector => GetDirector();
+
         public string SpecialPosition { get; set; }
 
         public List<Evaluation> Evaluations { get; set; }
+        private string evalStr { get; set; }
+        public bool isEvaluated { get; set; }
 
         [JsonIgnore]
         public int Age => DoB == null ? 0 : Functions.GetAge(DoB.Value);
@@ -101,6 +106,15 @@ namespace HR.Data.Models
             {
                 Phone = dict["Phone"].ToString();
             }
+            if (dict.ContainsKey("IsActive"))
+            {
+                var a = dict["IsActive"].ToString();
+                if(a == "1")
+                {
+                    isActive = true;
+                }
+                //isActive = bool.Parse(dict["isActive"].ToString());
+            }
             if (dict.ContainsKey("HRApp_Special_Position"))
             {
                 try
@@ -124,6 +138,10 @@ namespace HR.Data.Models
             {
                 FullName = dict["FriendlyFullname"].ToString();
             }
+            if (dict.ContainsKey("FYEO_Evaluations"))
+            {
+                evalStr = dict["FYEO_Evaluations"].ToString();
+            }
             if (dict.ContainsKey("HRApp_Teams"))
             {
                 Teams = new List<Team>();
@@ -140,6 +158,37 @@ namespace HR.Data.Models
                 }
                 catch { }
             }
+            if(SpecialPosition == "Γενικός Διευθυντής")
+            {
+                Team nt = new Team();
+                nt.Position = 99;
+                Teams.Add(nt);
+            }
+        }
+        
+        public void GetEvalStatus(int evaluatorID)
+        {
+            var sss = evalStr;
+            isEvaluated = evalStr.Contains(evaluatorID.ToString() + "}");
+            //isEvaluated = Evaluations.Where(x => x.EvaluatorID == evaluatorID).Any();
+        }
+
+        private bool GetDirector()
+        {
+            try
+            {
+                if(Teams.Where(x=>x.Position == 90).Any())
+                {
+                    return true;
+                }
+                if(Directorate == "Νομική Σύμβουλος" || SpecialPosition == "Υπεύθυνος Ανθρωπίνων πόρων")
+                {
+                    return true;
+                }
+
+            }
+            catch { }
+            return false;
         }
 
         public string TeamsString()
@@ -152,7 +201,7 @@ namespace HR.Data.Models
                 {
                     teams += "+";
                 }
-                teams += t.Position + "@[" + t.Name+"]";
+                teams += t.Position.ToString(Functions.decimalFormat) + "@[" + t.Name+"]";
                 i++;
             }
             return teams;
@@ -171,12 +220,26 @@ namespace HR.Data.Models
         public void GetSupervisor(IEnumerable<Employee> emps)
         {
             List<Employee> supervisors = new List<Employee>();
-            foreach (var team in Teams.Where(x=>x.Position != 0))
+            if (isDirector)
             {
-                var tEmps = emps.Where(x => x.Teams.Where(y => y.Name == team.Name).Any()).OrderByDescending(x => x.Teams.Where(y => y.Name == team.Name).First().Position).First();
-                supervisors.Add(tEmps);
+                var dManager = emps.Where(x => x.SpecialPosition == "Γενικός Διευθυντής");
+                supervisors.AddRange(dManager);
             }
-            Supervisors = string.Join(",", supervisors.Select(x=>x.FullName).Distinct());
+            else
+            {
+                foreach (var team in Teams.Where(x => x.Position != 0))
+                {
+                    //var tEmps = emps.Where(x => x.Teams.Where(y => y.Name == team.Name).Any()).OrderByDescending(x => x.Teams.Where(y => y.Name == team.Name).First().Position);
+                    var tEmps = emps.Where(x=>x.ID != ID).Where(x => x.Teams.Where(y => y.Name == team.Name && y.Position > 70 && y.Position > team.Position + 1).Any());
+                    supervisors.AddRange(tEmps);
+                }
+                if (supervisors.Count == 0)
+                {
+                    var dManager = emps.Where(x => x.Teams.Where(y => y.Position == 90).Any()).Where(x => x.Directorate == Directorate);
+                    supervisors.AddRange(dManager);
+                }
+            }
+            SupervisorString = string.Join(", ", supervisors.Where(x=>x.ID != ID).Select(x=>x.FullName).Distinct());
         }
 
         public List<int> editors()

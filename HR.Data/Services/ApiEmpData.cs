@@ -64,6 +64,7 @@ namespace HR.Data.Services
                 newEmp.FromJobjectSimple(emp);
                 employees.Add(newEmp);
             }
+            var c = employees.Where(x => x.Phone != "0").Count();
             return employees.Where(x=>x.Phone != "0");
         }
 
@@ -85,7 +86,8 @@ namespace HR.Data.Services
                 newEmp.FromJobjectSimple(emp);
                 employees.Add(newEmp);
             }
-            return employees.Where(x => x.Phone != "0");
+            return employees.Where(x => x.isActive);
+            //return employees.Where(x => x.Phone != "0");
 
         }
 

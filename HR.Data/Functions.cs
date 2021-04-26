@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,8 @@ namespace HR.Data
 {
     public static class Functions
     {
+        public static NumberFormatInfo decimalFormat => GetDecimalFormat();
+
         public static int GetAge(DateTime birthDate)
         {
             DateTime now = DateTime.Now;
@@ -30,6 +33,13 @@ namespace HR.Data
                 default:
                     return "";
             }
+        }
+
+        private static NumberFormatInfo GetDecimalFormat()
+        {
+            NumberFormatInfo result = new NumberFormatInfo();
+            result.NumberDecimalSeparator = ".";
+            return result;
         }
     }
 }

@@ -19,7 +19,8 @@ namespace HR.Web.Controllers
         [HttpGet]
         public ActionResult Index(int id,int evalID = 0 ,bool view = false)
         {
-            var emp = Functions.Emps.Where(x => x.ID == id).FirstOrDefault();
+            rContext currentContext = Session[nameof(currentContext)] as rContext;
+            var emp = currentContext.Emps.Where(x => x.ID == id).FirstOrDefault();
             Evaluation model;
             if (view)
             {
@@ -28,8 +29,11 @@ namespace HR.Web.Controllers
             if(evalID == 0)
             {
                 //model = db.GetClearEval();
-                model = db.GetTemplate();
-                model.EvaluatorID = Functions.User.ID;
+                //model = db.GetTemplate();
+                int templateID = Functions.GetTemplateID(emp, currentContext.User);
+                model = db.GetTemplateById(templateID);
+                model.TemplateID = templateID;
+                model.EvaluatorID = currentContext.User.ID;
                 model.EvalueeID = id;
             }
             else
@@ -49,9 +53,12 @@ namespace HR.Web.Controllers
         [HttpPost]
         public ActionResult Index(Evaluation eval)
         {
+            rContext currentContext = Session[nameof(currentContext)] as rContext;
             var z = Request.Form;
             var model = eval;
-            var clearEval = db.GetClearEval();
+            var emp = currentContext.Emps.Where(x => x.ID == eval.EvalueeID).First();
+            int tID = Functions.GetTemplateID(emp,currentContext.User);
+            var clearEval = db.GetTemplateById(tID);
             model.ScoreTable = clearEval.ScoreTable;
             model.Sections = clearEval.Sections;
             model.EvalueeID = eval.EvalueeID;
@@ -60,7 +67,7 @@ namespace HR.Web.Controllers
             model.Date = DateTime.Now;
             if (model.isComplete())
             {
-                if (eval.EvalID == 0)
+                if (Functions.BaseEvalIDs().Contains(eval.EvalID))
                 {
                     db.UploadEval(model);
                 }

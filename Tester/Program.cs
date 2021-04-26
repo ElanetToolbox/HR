@@ -22,19 +22,33 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            ApiEmpData api = new ApiEmpData();
-            Employee e = api.Get(12);
-            string s = e.TeamsString();
-            //Evaluation newEval = new Evaluation();
+            ApiEvaluationData api = new ApiEvaluationData();
+            //var t = api.GetTemplateById(5);
+            //var emps = api.GetAll().OrderBy(x=>x.MapRef);
+            //string places = string.Join("\n", emps.Select(x => x.MapRef));
 
-            //newEval.CreateFromExcel(@"C:\Users\chatziparadeisis.i\Documents\temp_test.xlsx");
+            //WorkBook wb = new WorkBook(ExcelFileFormat.XLSX);
+            //WorkSheet ws = wb.CreateWorkSheet("1");
+            //ws.SetCellValue(0, 0, "Όνομα");
+            //ws.SetCellValue(0, 1, "Ιδιότητα");
+            //int row = 1;
+            //foreach (var emp in emps)
+            //{
+            //    ws.SetCellValue(row, 0, emp.FullName);
+            //    ws.SetCellValue(row, 1, emp.Position);
+            //    row++;
+            //}
+            //wb.SaveAs(@"C:\Users\chatziparadeisis.i\Desktop\5-copied\jobs.xlsx");
+            Evaluation newEval = new Evaluation();
 
-            //newEval.templatedata = new templatedata();
-            //newEval.templatedata.Type = 1;
-            //newEval.templatedata.Cycle = "2020";
-            //newEval.templatedata.Criteria = "1,2,3";
+            newEval.CreateFromExcel(@"C:\Users\chatziparadeisis.i\Documents\hrapp\systems_test.xlsx");
 
-            //api.UploadEvaluationTemplate(newEval);
+            newEval.templatedata = new templatedata();
+            newEval.templatedata.Type = 2;
+            newEval.templatedata.Cycle = "2021";
+            newEval.templatedata.Criteria = "0";
+
+            api.UploadEvaluationTemplate(newEval);
 
 
         }

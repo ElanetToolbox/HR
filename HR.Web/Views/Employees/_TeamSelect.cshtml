@@ -1,4 +1,7 @@
 ﻿@model  HR.Data.Models.Team
+@{ 
+    rContext currentContext = Session[nameof(currentContext)] as rContext;
+}
 <div>
     <table>
         <tr>
@@ -13,15 +16,15 @@
             <td>
                 <select name="positions" class="form-control">
                     <option value=""></option>
-                    @foreach (var item in Functions.Positions)
+                    @foreach (var item in currentContext.Positions)
                     {
                         if (Model.Position == item.id)
                         {
-                            <option value="@item.id" selected>@item.description</option>
+                            <option value="@item.id.ToString(Functions.decimalFormat)" selected>@item.description</option>
                         }
                         else
                         {
-                            <option value="@item.id">@item.description</option>
+                            <option value="@item.id.ToString(Functions.decimalFormat)">@item.description</option>
                         }
                     }
                 </select>
@@ -29,15 +32,15 @@
             <td>
                 <select name="departments" class="form-control">
                     <option value=""></option>
-                    @foreach (var item in Functions.Departments)
+                    @foreach (var item in currentContext.Departments)
                     {
                         if (Model.Name == item.id)
                         {
-                            <option value="@item.id" selected>@item.description</option>
+                            <option value="@item.id.ToString(Functions.decimalFormat)" selected>@item.description</option>
                         }
                         else
                         {
-                            <option value="@item.id">@item.description</option>
+                            <option value="@item.id.ToString(Functions.decimalFormat)">@item.description</option>
                         }
                     }
                 </select>
