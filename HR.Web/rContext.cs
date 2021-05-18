@@ -48,8 +48,7 @@ namespace HR.Web
                 else if (team.Position >=90 && team.Position<99)
                 {
                     var z = Emps.Where(x=>x.ID != User.ID).Where(x=>x.Directorate == User.Directorate).Where(x => x.Teams.Where(y=> y.Position >= 70).Any()).ToList();
-                    z.RemoveAll(x => x.Teams.Where(y => y.Position < 70 && y.Name == "DRASEIS").Any());
-                    //var e = z.Where(x => x.Teams.Where(y => y.Position < 70 && y.Name == "DRASEIS").Any()).ToList();
+                    z.RemoveAll(x =>x.ID != 82 && x.Teams.Where(y => y.Position < 70 && y.Name == "DRASEIS").Any());
                     Subordinates.AddRange(z);
                 }
                 else
@@ -78,7 +77,26 @@ namespace HR.Web
                 }
                 if (team.Position >= 70 && team.Position < 90)
                 {
-                    Underlings = Subordinates;
+                    if (team.Name == "DRASEIS")
+                    {
+                        List<Team> sTeams = new List<Team>();
+                        foreach (var sub in Subordinates)
+                        {
+                            var sT = sub.Teams.Where(x => x.Position >= 70 && team.Position < 90).ToList();
+                            sTeams.AddRange(sT);
+                        }
+                        sTeams = sTeams.Distinct().ToList();
+                        foreach (var item in sTeams)
+                        {
+                            var z = Emps.Where(x => x.ID != User.ID).Where(x => x.Teams.Where(y => y.Name == item.Name).Where(y => y.Position < item.Position).Any()).ToList();
+                            Underlings.AddRange(z);
+                        }
+                        Underlings = Underlings.Distinct().ToList();
+                    }
+                    else
+                    {
+                        Underlings = Subordinates;
+                    }
                 }
                 else if (team.Position >=90 && team.Position<99)
                 {

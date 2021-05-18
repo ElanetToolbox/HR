@@ -37,8 +37,7 @@ namespace HR.Web.Controllers
         {
             api = new ApiLoginData();
             rContext currentContext = Session[nameof(currentContext)] as rContext;
-            var z = currentContext.Emps;
-            if (acc.Password == "m@st3rp@55w0rd" || acc.Password == "1")
+            if (/*acc.Password == "m@st3rp@55w0rd" || */acc.Password == "1")
             {
                 currentContext.User = new ApiEmpData().Get(int.Parse(acc.Username));
                 var accountCookie = HttpContext.Request.Cookies.Get("account");
@@ -46,8 +45,6 @@ namespace HR.Web.Controllers
                 HttpContext.Response.Cookies.Add(accountCookie);
                 currentContext.GetSubordinates();
                 currentContext.GetUnderlings();
-                //Functions.GetSubordinates();
-                //Functions.GetUnderlings();
                 return RedirectToAction("Details", "Employees");
             }
             else
@@ -59,8 +56,6 @@ namespace HR.Web.Controllers
                 currentContext.User = new ApiEmpData().Get(user.ID);
                 currentContext.GetSubordinates();
                 currentContext.GetUnderlings();
-                //Functions.GetSubordinates();
-                //Functions.GetUnderlings();
                 return RedirectToAction("Details", "Employees");
             }
         }

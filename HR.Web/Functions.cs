@@ -77,7 +77,7 @@ namespace HR.Web
         
         public static int GetTemplateID(Employee emp,Employee eval)
         {
-            if(emp.Teams.Where(x=>x.Name == "SYST3").Any())
+            if (emp.Teams.Where(x => x.Name == "SYST3" && x.Position < 70).Any())
             {
                 return 10;
             }

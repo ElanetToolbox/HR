@@ -15,7 +15,14 @@
                     <td width="500">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <img class="profile-image" src="@Model.photo_blob_html_image" width="250" height="250" style="border-radius:50%"></img>
+                                @if (Model.photo_blob_html_image.Length > 100)
+                                {
+                                    <img class="profile-image" src="@Model.photo_blob_html_image" width="250" height="250" style="border-radius:50%"></img>
+                                }
+                                else
+                                {
+                                    <img class="profile-image" src="~/Content/Images/profile.png" width="250" height="250" style="border-radius:50%"></img>
+                                }
                             </div>
                             <div class="panel-body">
                                 <dl class="dl-horizontal">

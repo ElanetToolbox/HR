@@ -22,8 +22,15 @@ namespace HR.Data.Services
             string result = response.Content;
             dynamic eval = JsonConvert.DeserializeObject(result);
             Account newAccount = new Account();
-            newAccount.CreateUser(eval);
-            return newAccount;
+            try
+            {
+                newAccount.CreateUser(eval);
+                return newAccount;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

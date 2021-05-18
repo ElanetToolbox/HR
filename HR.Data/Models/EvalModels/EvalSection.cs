@@ -74,7 +74,7 @@ namespace HR.Data.Models
                 {
                     case "matrix":
                         var lq = new LinkertQuestion();
-                        lq.Order = 1;
+                        lq.order = 1;
                         lq.options = new List<LinkertOption>();
                         lq.Title = sheet.GetCellAt(i, 1).StringValue;
                         lq.text = sheet.GetCellAt(i, 2).StringValue;

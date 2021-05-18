@@ -88,7 +88,7 @@ namespace HR.Data.Models
 
         public string GetScoreText()
         {
-            return ScoreTable.Where(x => GetScore() >= x.Min).Where(x => GetScore() <= x.Max).Single().Text;
+            return ScoreTable.Where(x => GetScore() >= x.Min).Where(x => GetScore() < x.Max).Single().Text;
         }
 
         public string GetJson()

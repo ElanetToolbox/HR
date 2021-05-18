@@ -66,6 +66,10 @@
       <Project>{7C821F6F-6A23-41ED-92C8-0EF72F94651C}</Project>
       <Name>HR.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HR.Web\HR.Web.csproj">
+      <Project>{0689DFB9-226F-4E02-B929-B5B95BDF51B6}</Project>
+      <Name>HR.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

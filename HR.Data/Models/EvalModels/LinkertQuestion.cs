@@ -9,7 +9,7 @@ namespace HR.Data.Models
 {
     public class LinkertQuestion : IQuestion
     {
-        public int Order { get; set; }
+        public int order { get; set; }
         public string fullText { get; set; }
         public string text { get; set; }
         public string Title { get; set; }
@@ -20,7 +20,7 @@ namespace HR.Data.Models
         public void CreateOld(JObject jQuestion)
         {
             options = new List<LinkertOption>();
-            Order = (int)jQuestion.SelectToken("order");
+            order = (int)jQuestion.SelectToken("order");
             fullText = (string)jQuestion.SelectToken("text");
             SplitText();
             JArray jOptions = (JArray)jQuestion.SelectToken("columns");

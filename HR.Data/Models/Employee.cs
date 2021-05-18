@@ -88,7 +88,11 @@ namespace HR.Data.Models
             }
             if (dict.ContainsKey("FYEO_Specialty"))
             {
-                Specialty = dict["FYEO_Specialty"].ToString();
+                try
+                {
+                    Specialty = dict["FYEO_Specialty"].ToString();
+                }
+                catch { Specialty = ""; }
             }
             if (dict.ContainsKey("HRApp_TitleComputed"))
             {
@@ -122,6 +126,17 @@ namespace HR.Data.Models
                     SpecialPosition = dict["HRApp_Special_Position"].ToString();
                 }
                 catch { SpecialPosition = ""; }
+                if (!string.IsNullOrWhiteSpace(SpecialPosition))
+                {
+                    if (!string.IsNullOrWhiteSpace(Position))
+                    {
+                        Position = SpecialPosition + ", " + Position;
+                    }
+                    else
+                    {
+                        Position = SpecialPosition;
+                    }
+                }
             }
             if (dict.ContainsKey("MapRef"))
             {
@@ -168,8 +183,14 @@ namespace HR.Data.Models
         
         public void GetEvalStatus(int evaluatorID)
         {
-            var sss = evalStr;
-            isEvaluated = evalStr.Contains(evaluatorID.ToString() + "}");
+            if (evaluatorID == 99)
+            {
+                isEvaluated = evalStr.Contains("isMidTerm");
+            }
+            else
+            {
+                isEvaluated = evalStr.Contains(evaluatorID.ToString() + "}");
+            }
             //isEvaluated = Evaluations.Where(x => x.EvaluatorID == evaluatorID).Any();
         }
 
@@ -181,7 +202,7 @@ namespace HR.Data.Models
                 {
                     return true;
                 }
-                if(Directorate == "Νομική Σύμβουλος" || SpecialPosition == "Υπεύθυνος Ανθρωπίνων πόρων")
+                if(SpecialPosition == "Νομική Σύμβουλος" || SpecialPosition == "Υπεύθυνος Ανθρωπίνων πόρων")
                 {
                     return true;
                 }
