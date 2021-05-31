@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using HR.Data.Services;
+using IronXL;
 
 namespace HR.Web
 {
@@ -100,6 +101,116 @@ namespace HR.Web
             result.NumberDecimalSeparator = ".";
             return result;
         }
+        
+        public static byte[] ExportEmpEvals(rContext context,int bossID = 0)
+        {
+            IronXL.License.LicenseKey = "IRONXL.CHATZIPARADEISISI.16621-8503EC3404-HRKDSZ-A6MNT3GSNY5W-SIKQLQDHSO7G-HTLGTVI2UBY6-IE2DAQCFKAA5-6LPKI4D4PHAH-SBY2ZD-TKYWZDGBX42AEA-DEPLOYMENT.TRIAL-6ZZ7QG.TRIAL.EXPIRES.24.JUN.2021";
+            ApiEvaluationData evApi = new ApiEvaluationData();
+            rContext c = context;
+            List<Evaluation> evals = new List<Evaluation>();
+            IEnumerable<Employee> emps;
+            if(bossID == 0)
+            {
+                emps = c.Underlings;
+            }
+            else
+            {
+                emps = c.Subordinates;
+            }
+            foreach (var e in emps)
+            {
+                IEnumerable<Evaluation> ev;
+                if (bossID != 0)
+                {
+                    ev = evApi.GetEmpEvaluations(e.ID).Where(x => x.EvaluatorID == bossID);
+                }
+                else
+                {
+                    ev = evApi.GetEmpEvaluations(e.ID);
+                }
+                evals.AddRange(ev);
+            }
+
+            int row = 2;
+            int initialCol = 2;
+            string homeDir = AppContext.BaseDirectory;
+            string fullPath;
+            WorkBook wb;
+            if (bossID != 0)
+            {
+                //fullPath = homeDir + @"\Content\ReportTemplates\hr_template.xlsx";
+                try
+                {
+                    fullPath = HttpContext.Current.Server.MapPath(@"~\Content\ReportTemplates\hr_template.xlsx");
+                    wb = WorkBook.LoadExcel(fullPath);
+                }
+                catch
+                {
+                    fullPath = @"C:\ReportTemplates\hr_template.xlsx";
+                    wb = WorkBook.LoadExcel(fullPath);
+                }
+                //fullPath = System.Web.Hosting.HostingEnvironment.MapPath(@"~\Content\ReportTemplates\hr_template.xlsx");
+                //fullPath = @"T:\ToolboxStorage\Applications\HR\ReportTemplates\hr_template.xlsx";
+            }
+            else
+            {
+                //fullPath = homeDir + @"\Content\ReportTemplates\hr_total_template.xlsx";
+                fullPath = HttpContext.Current.Server.MapPath(@"~\Content\ReportTemplates\hr_total_template.xlsx");
+                wb = WorkBook.LoadExcel(fullPath);
+                //fullPath = System.Web.Hosting.HostingEnvironment.MapPath(@"~\Content\ReportTemplates\hr_total_template.xlsx");
+                //fullPath = @"T:\ToolboxStorage\Applications\HR\ReportTemplates\hr_total_template.xlsx";
+                initialCol++;
+            }
+            //WorkBook wb = WorkBook.LoadExcel(fullPath);
+            WorkSheet ws = wb.GetWorkSheet("Sheet1");
+            foreach (var eval in evals)
+            {
+                bool isManager = eval.Sections.First().questions.Count() > 5;
+                string Name = c.Emps.Where(x => x.ID == eval.EvalueeID).Single().FullName;
+                string Grade = eval.GetScore().ToString().Replace(".",",");
+                List<string> answers = eval.Sections.OrderBy(x => x.Order).SelectMany(x => x.questions).Select(x => x.savedvalue).ToList();
+                ws.SetCellValue(row, 0, Name);
+                ws.SetCellValue(row, 1, Grade);
+                if(bossID == 0)
+                {
+                    string evalName = c.Emps.Where(x => x.ID == eval.EvaluatorID).Single().FullName;
+                    ws.SetCellValue(row, 2, Grade);
+                    ws.SetCellValue(row, 1, evalName);
+                }
+                int col = initialCol;
+                foreach (var a in answers)
+                {
+                    ws.SetCellValue(row, col, a);
+                    if (col == 7 && !isManager)
+                    {
+                        col += 2;
+                    }
+                    col++;
+                }
+                row++;
+            }
+            var result = wb.ToBinary();
+            wb.Close();
+            return result;
+        }
+        
+        public static string NumToLetter(int num)
+        {
+            switch (num)
+            {
+                case 1:
+                    return "Α";
+                case 2:
+                    return "Β";
+                case 3:
+                    return "Γ";
+                case 4:
+                    return "Δ";
+                default:
+                    return null;
+            }
+        }
+
 
     }
 }

@@ -41,5 +41,22 @@ namespace HR.Data
             result.NumberDecimalSeparator = ".";
             return result;
         }
+
+        public static string NumToLetter(int num)
+        {
+            switch (num)
+            {
+                case 1:
+                    return "Α";
+                case 2:
+                    return "Β";
+                case 3:
+                    return "Γ";
+                case 4:
+                    return "Δ";
+                default:
+                    return null;
+            }
+        }
     }
 }

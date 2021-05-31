@@ -59,6 +59,7 @@
     <Compile Include="Models\EmployeeModels\MapRef.cs" />
     <Compile Include="Models\EmployeeModels\Position.cs" />
     <Compile Include="Models\EmployeeModels\Team.cs" />
+    <Compile Include="Models\EmployeeModels\ThinEvaluation.cs" />
     <Compile Include="Models\Employees.cs" />
     <Compile Include="Models\EvalModels\EvalSection.cs" />
     <Compile Include="Models\EvalModels\IQuestion.cs" />

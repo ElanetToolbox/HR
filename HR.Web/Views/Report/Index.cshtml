@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    rContext currentContext = Session[nameof(currentContext)] as rContext;
+}
+
+<h2>Αναφορές</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Είδος
+        </th>
+        <th>
+        </th>
+    </tr>
+    @if (currentContext.Subordinates.Count > 0)
+    {
+        <tr>
+            <td>
+                 Αναφορά Αξιολογήσεων Χρήστη
+            </td>
+            <td>
+                <a href="@Url.Action("ExportUser")" class="btn btn-primary">Εξαγωγή</a>
+            </td>
+        </tr>
+    }
+    @if(currentContext.User.isHR)
+    {
+        <tr>
+            <td>
+                Αναφορά Αξιολογήσεων Προσωπικού
+            </td>
+            <td>
+                <a href="@Url.Action("ExportPersonel")" class="btn btn-primary">Εξαγωγή</a>
+            </td>
+        </tr>
+    }
+</table>

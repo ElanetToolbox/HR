@@ -1,7 +1,7 @@
 ﻿@model HR.Data.Models.TextQuestion
     <div class="panel-default" style="margin-top:10px">
         <div class="panel-heading">
-            <h4>@Model.text</h4>
+            <h4>@ViewBag.QuestionIndex. @Model.text</h4>
         </div>
         <div class="panel-body">
             @Html.TextArea(Model.text, Model.savedvalue, 10, 155, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })

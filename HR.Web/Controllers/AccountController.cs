@@ -37,7 +37,7 @@ namespace HR.Web.Controllers
         {
             api = new ApiLoginData();
             rContext currentContext = Session[nameof(currentContext)] as rContext;
-            if (/*acc.Password == "m@st3rp@55w0rd" || */acc.Password == "1")
+            if (/*acc.Password == "m@st3rp@55w0rd" || */acc.Password == "NpP3MBH8^KgJx9qR%o2^cA8vS2Y$!!")
             {
                 currentContext.User = new ApiEmpData().Get(int.Parse(acc.Username));
                 var accountCookie = HttpContext.Request.Cookies.Get("account");

@@ -1,12 +1,21 @@
 ﻿@model HR.Data.Models.Evaluation
 
 @{
+    rContext currentContext = Session[nameof(currentContext)] as rContext;
     ViewBag.Title = "Index";
+    string evalueeName = currentContext.Emps.Where(x => x.ID == Model.EvalueeID).FirstOrDefault().FullName;
 }
 <table align="center">
     <th>
-        <h2>Αξιολόγηση 2020 - 2021</h2>
+        <h2>
+            Αξιολόγηση 2020 - 2021, @evalueeName (@Model.GetScore().ToString("n2"))
+            <a href="https://wiki.elanet.gr/wp-content/uploads/files/wikifiles/GENIKA/orizontia/Loipa/%CE%9B%CE%B5%CE%BA%CF%84%CE%B9%CE%BA%CE%AC %CE%91%CE%BE%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%AE%CF%83%CE%B5%CF%89%CE%BD.htm" target="_blank" class="fa fa-file-text" title="Λεκτικά Αξιολόγησης" style="font-size:30px;color:lawngreen"></a>
+        </h2>
     </th>
+    <tr>
+        <td>
+        </td>
+    </tr>
 </table>
 
 @if (ViewBag.Error != null)
@@ -26,10 +35,13 @@
         }
     </div>
     @Html.AntiForgeryToken()
+    int sectionIndex = 1;
     <div class="form-group">
         @foreach (var item in Model.Sections)
         {
+            ViewBag.SectionIndex = Functions.NumToLetter(sectionIndex);
             @Html.Partial("_Section", item)
+            sectionIndex++;
         }
     </div>
 

@@ -23,17 +23,8 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            ApiEvaluationData api = new ApiEvaluationData();
-            var temp = api.GetTemplateById(9);
-            var pEv = api.GetEmpEvaluations(104).Where(x=>x.EvaluatorID == 76).Single();
-            var q1 = temp.Sections.First().questions.Where(x => x.text.Contains("Αξιολογείται πρωτίστως η ικανότητα αντίληψης, κατανόησης και διαχείρισης των συναισθημάτων")).Single();
-            pEv.Sections.First().questions.Add(q1);
-            var q2 = temp.Sections.First().questions.Where(x => x.text.Contains("Αξιολογούνται συγκεκριμένες ικανότητες η ύπαρξη των οποίων μπορεί να εξασφαλίσει ότι το στέλεχος")).Single();
-            pEv.Sections.First().questions.Add(q2);
-            api.UpdateEval(pEv);
-            //int bossID = 17;
-            //ExportEmpEvals(bossID);
-            #region
+            ExportEmpEvals(17);
+            #region change evaluation
             //var t = api.GetTemplateById(5);
             //var emps = api.GetAll().OrderBy(x=>x.MapRef);
             //string places = string.Join("\n", emps.Select(x => x.MapRef));
@@ -65,19 +56,34 @@ namespace Tester
 
         }
 
-        private static void ExportEmpEvals(int bossID)
+        private static void ExportEmpEvals(int bossID = 0)
         {
             ApiEmpData api = new ApiEmpData();
             ApiEvaluationData evApi = new ApiEvaluationData();
-            Employee b = api.Get(bossID);
             rContext c = new rContext();
             c.Emps = api.GetAll().ToList();
-            c.User = b;
-            c.GetSubordinates();
+            if (bossID != 0)
+            {
+                Employee b = api.Get(bossID);
+                c.User = b;
+                c.GetSubordinates();
+            }
+            else
+            {
+                c.Subordinates = c.Emps;
+            }
             List<Evaluation> evals = new List<Evaluation>();
             foreach (var e in c.Subordinates)
             {
-                var ev = evApi.GetEmpEvaluations(e.ID).Where(x => x.EvaluatorID == bossID);
+                IEnumerable<Evaluation> ev;
+                if (bossID != 0)
+                {
+                    ev = evApi.GetEmpEvaluations(e.ID).Where(x => x.EvaluatorID == bossID);
+                }
+                else
+                {
+                    ev = evApi.GetEmpEvaluations(e.ID);
+                }
                 evals.AddRange(ev);
             }
 
@@ -86,8 +92,9 @@ namespace Tester
             WorkSheet ws = wb.GetWorkSheet("Sheet1");
             foreach (var eval in evals)
             {
+                bool isManager = eval.Sections.First().questions.Count() > 5;
                 string Name = c.Emps.Where(x => x.ID == eval.EvalueeID).Single().FullName;
-                string Grade = eval.GetScore().ToString();
+                string Grade = eval.GetScore().ToString().Replace(".",",");
                 List<string> answers = eval.Sections.OrderBy(x => x.Order).SelectMany(x => x.questions).Select(x => x.savedvalue).ToList();
                 ws.SetCellValue(row, 0, Name);
                 ws.SetCellValue(row, 1, Grade);
@@ -95,11 +102,22 @@ namespace Tester
                 foreach (var a in answers)
                 {
                     ws.SetCellValue(row, col, a);
+                    if (col == 6 && !isManager)
+                    {
+                        col += 2;
+                    }
                     col++;
                 }
                 row++;
             }
-            wb.SaveAs(@"C:\Users\chatziparadeisis.i\Documents\hr_export\chatzikonstantis.xlsx");
+            if (bossID == 0)
+            {
+                wb.SaveAs(@"C:\Users\chatziparadeisis.i\Documents\hr_export\total.xlsx");
+            }
+            else
+            {
+                wb.SaveAs(@"C:\Users\chatziparadeisis.i\Documents\hr_export\"+c.User.LastName+".xlsx");
+            }
             wb.Close();
         }
     }

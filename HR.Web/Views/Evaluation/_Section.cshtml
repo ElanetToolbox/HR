@@ -1,12 +1,14 @@
 ﻿@model HR.Data.Models.EvalSection
-    <div>
+    <div style="margin-top:60px;margin-bottom:60px">
         <div style="text-align:center">
             <h3>
-                @Html.DisplayFor(model => model.Header)
+                @ViewBag.SectionIndex. @Html.DisplayFor(model => model.Header)
             </h3>
         </div>
         @foreach (var question in Model.questions)
         {
+            int index = Model.questions.IndexOf(question) + 1;
+            ViewBag.QuestionIndex = (string)(ViewBag.SectionIndex) + index;
             if (Model.SectionType == "matrix")
             {
                 @Html.Partial("_LinkertQuestion", question)
