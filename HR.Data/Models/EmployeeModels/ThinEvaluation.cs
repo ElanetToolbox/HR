@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,16 @@ namespace HR.Data.Models.EmployeeModels
 {
     public class ThinEvaluation
     {
-        public int Year { get; set; }
-        public bool isMidTerm { get; set; }
+        public int ID { get; set; }
         public int EvaluatorID { get; set; }
-        public int EvalueeID { get; set; }
+
+        public void Create(JToken eval)
+        {
+            ID = (int)eval[0];
+            var d = eval[1];
+        }
     }
+
+
+
 }

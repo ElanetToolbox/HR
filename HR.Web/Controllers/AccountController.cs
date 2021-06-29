@@ -17,7 +17,8 @@ namespace HR.Web.Controllers
         public async Task<ActionResult> Login()
         {
             var apiEmp = new ApiEmpData();
-            var empEnum = await apiEmp.GetAllAsync();
+            //var empEnum = await apiEmp.GetAllAsync();
+            var empEnum = apiEmp.GetAll();
             rContext currentContext = new rContext();
             currentContext.Emps = empEnum.ToList();
             Session[nameof(currentContext)] = currentContext;

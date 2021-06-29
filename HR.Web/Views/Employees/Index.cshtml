@@ -46,9 +46,12 @@
         <td>
             @i
         </td>
-        <td>
+        <td class="empphoto" id="@item.email">
             @Html.DisplayFor(modelItem => item.FullName)
         </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>*@
         <td>
             @Convert.ToDateTime(item.DateHired).ToString("dd/MM/yyyy")
         </td>

@@ -18,6 +18,7 @@ namespace HR.Data.Services
         public Employee Get(int ID)
         {
             var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/users/");
+            client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddParameter("id", ID);
@@ -34,6 +35,7 @@ namespace HR.Data.Services
         public IEnumerable<Employee> GetMany(string IDs)
         {
             var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/users/");
+            client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddParameter("id", IDs);
@@ -49,6 +51,7 @@ namespace HR.Data.Services
         public IEnumerable<Employee> GetAll()
         {
             var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/users/");
+            client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddParameter("limit", 300);
@@ -60,17 +63,25 @@ namespace HR.Data.Services
             List<Employee> employees = new List<Employee>();
             foreach(JObject emp in elist)
             {
-                Employee newEmp = new Employee();
-                newEmp.FromJobjectSimple(emp);
-                employees.Add(newEmp);
+                    //Employee newEmp = new Employee();
+                    //newEmp.FromJobjectSimple(emp);
+                    //employees.Add(newEmp);
+                try
+                {
+                    Employee newEmp = new Employee();
+                    newEmp.FromJobjectSimple(emp);
+                    employees.Add(newEmp);
+                }
+                catch { }
             }
             var c = employees.Where(x => x.Phone != "0").Count();
-            return employees.Where(x=>x.Phone != "0");
+            return employees;
         }
 
         public async Task<IEnumerable<Employee>> GetAllAsync()
         {
             var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/users/");
+            client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddParameter("limit", 300);
@@ -86,7 +97,7 @@ namespace HR.Data.Services
                 newEmp.FromJobjectSimple(emp);
                 employees.Add(newEmp);
             }
-            return employees.Where(x => x.isActive);
+            return employees;
             //return employees.Where(x => x.Phone != "0");
 
         }
@@ -94,6 +105,7 @@ namespace HR.Data.Services
         public IEnumerable<Position> GetPositions()
         {
             var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/jobtitles/");
+            client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddParameter("limit", 300);
@@ -116,6 +128,7 @@ namespace HR.Data.Services
         public IEnumerable<Department> GetDepartments()
         {
             var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/teams/");
+            client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddParameter("limit", 300);
@@ -138,6 +151,7 @@ namespace HR.Data.Services
         public void UpdateEmployee(Employee emp)
         {
             var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/users/"+emp.ID);
+            client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.PATCH);
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded");

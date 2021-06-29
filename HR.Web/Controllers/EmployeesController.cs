@@ -32,6 +32,7 @@ namespace HR.Web.Controllers
                 model = currentContext.Underlings;
             }
             model.ToList().ForEach(x => x.GetEvalStatus(currentContext.User.ID));
+            string emps = string.Join("\n", currentContext.Subordinates.Select(x => x.FullName).ToList());
             ViewBag.Title = "Προσωπικό";
             return View(model);
         }

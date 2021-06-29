@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using HR.Data.Models.EmployeeModels;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace HR.Data.Models
     public class Employee
     {
         public int ID { get; set; }
+        public int EpanekID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string FullName { get; set; }
@@ -46,8 +48,6 @@ namespace HR.Data.Models
 
         [JsonIgnore]
         public int Age => DoB == null ? 0 : Functions.GetAge(DoB.Value);
-        //[JsonIgnore]
-        //public string FullName => LastName + " " + FirstName;
 
         public void FromJobjectSimple(JObject obj)
         {
@@ -56,6 +56,10 @@ namespace HR.Data.Models
             if (dict.ContainsKey("id"))
             {
                 ID = int.Parse(dict["id"].ToString());
+            }
+            if (dict.ContainsKey("epanek_id"))
+            {
+                EpanekID = int.Parse(dict["epanek_id"].ToString());
             }
             if (dict.ContainsKey("LastName"))
             {
@@ -100,7 +104,14 @@ namespace HR.Data.Models
             }
             if (dict.ContainsKey("Email"))
             {
-                email = dict["Email"].ToString();
+                try
+                {
+                    email = dict["Email"].ToString();
+                }
+                catch
+                {
+                    email = "";
+                }
             }
             if (dict.ContainsKey("Seat"))
             {
@@ -156,6 +167,12 @@ namespace HR.Data.Models
             if (dict.ContainsKey("FYEO_Evaluations"))
             {
                 evalStr = dict["FYEO_Evaluations"].ToString();
+                //JArray jEvals = (JArray)obj.SelectToken("FYEO_Evaluations");
+                //foreach (var e in jEvals)
+                //{
+                //    ThinEvaluation tEval = new ThinEvaluation();
+                //    tEval.Create(e);
+                //}
             }
             if (dict.ContainsKey("HRApp_Teams"))
             {
@@ -183,15 +200,21 @@ namespace HR.Data.Models
         
         public void GetEvalStatus(int evaluatorID)
         {
-            if (evaluatorID == 99)
+            try
             {
-                isEvaluated = evalStr.Contains("isMidTerm");
+                if (evaluatorID == 99 || evaluatorID == 8 || evaluatorID == 114)
+                {
+                    isEvaluated = evalStr.Contains("isMidTerm");
+                }
+                else
+                {
+                    isEvaluated = evalStr.Contains(evaluatorID.ToString() + "}");
+                }
             }
-            else
+            catch
             {
-                isEvaluated = evalStr.Contains(evaluatorID.ToString() + "}");
+
             }
-            //isEvaluated = Evaluations.Where(x => x.EvaluatorID == evaluatorID).Any();
         }
 
         private bool GetDirector()
@@ -234,7 +257,14 @@ namespace HR.Data.Models
             Dictionary<string, object> dict = obj.ToObject<Dictionary<string, object>>();
             if (dict.ContainsKey("photo_blob_html_image"))
             {
-                photo_blob_html_image = dict["photo_blob_html_image"].ToString();
+                try
+                {
+                    photo_blob_html_image = dict["photo_blob_html_image"].ToString();
+                }
+                catch
+                {
+                    photo_blob_html_image = "";
+                }
             }
         }
 

@@ -23,7 +23,45 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            ExportEmpEvals(17);
+            rContext c = new rContext();
+            ApiEmpData e_api = new ApiEmpData();
+            ApiEvaluationData ev_api = new ApiEvaluationData();
+            c.Emps = e_api.GetAll().ToList();
+            c.Emps.ForEach(x => x.GetEvalStatus(99));
+            //c.User = e_api.Get();
+            //var h = c.Emps.Where(x=>x.Teams.Where(y=>y.Name != null).Where(y=>y.Name.Contains("Ν11ΕΑ")).Any()).ToList();
+            //WorkBook wb = WorkBook.Create(ExcelFileFormat.XLSX);
+            //WorkSheet ws = wb.CreateWorkSheet("1");
+            //int row = 1;
+            //foreach (var item in h)
+            //{
+            //    ws.SetCellValue(row, 1, item.FullName);
+            //    ws.SetCellValue(row, 2, item.DateHired.Value.ToString("dd/MM/yyyy"));
+            //    row++;
+            //}
+            //wb.SaveAs(@"C:\Users\chatziparadeisis.i\Documents\hr_report.xlsx");
+            //foreach (var item in c.Subordinates)
+            //{
+            //    try
+            //    {
+            //        item.Evaluations = ev_api.GetEmpEvaluations(item.ID);
+            //        var eval = item.Evaluations.Where(x => x.EvaluatorID == 60).Single();
+            //        var q = eval.Sections[2].questions.Last();
+            //        if (q.savedvalue.Contains("Η παρούσα αξιολόγηση πραγματοποιήθηκε από τους: Κίτσου Κατερίνα και Χαϊδεμενάκη Μέγκυ") == false)
+            //        {
+            //            q.savedvalue = q.savedvalue + "\n" + "Η παρούσα αξιολόγηση πραγματοποιήθηκε από τους: Κίτσου Κατερίνα και Χαϊδεμενάκη Μέγκυ";
+            //            ev_api.UpdateEval(eval);
+            //        }
+            //    }
+            //    catch
+            //    {
+
+            //    }
+
+            //}
+
+
+            //ExportEmpEvals(17);
             #region change evaluation
             //var t = api.GetTemplateById(5);
             //var emps = api.GetAll().OrderBy(x=>x.MapRef);
@@ -52,8 +90,6 @@ namespace Tester
 
             //api.UploadEvaluationTemplate(newEval);
             #endregion
-
-
         }
 
         private static void ExportEmpEvals(int bossID = 0)

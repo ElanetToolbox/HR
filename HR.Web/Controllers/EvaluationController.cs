@@ -28,8 +28,6 @@ namespace HR.Web.Controllers
             }
             if(evalID == 0)
             {
-                //model = db.GetClearEval();
-                //model = db.GetTemplate();
                 int templateID = Functions.GetTemplateID(emp, currentContext.User);
                 model = db.GetTemplateById(templateID);
                 model.TemplateID = templateID;

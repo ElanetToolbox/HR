@@ -57,6 +57,14 @@ namespace HR.Web
                     Subordinates.AddRange(z);
                 }
             }
+            if(User.ID == 164)
+            {
+                rContext newContext = new rContext();
+                newContext.Emps = Emps;
+                newContext.User = Emps.Where(x => x.ID == 181).Single();
+                newContext.GetSubordinates();
+                Subordinates.AddRange(newContext.Subordinates.Where(x=>x.ID != 164));
+            }
             Subordinates = Subordinates.Distinct().ToList();
             Subordinates.ForEach(x => x.GetEvalStatus(User.ID));
         }

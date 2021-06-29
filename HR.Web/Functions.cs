@@ -45,6 +45,9 @@ namespace HR.Web
             l.Add(new KeyValuePair<string,string>("a10","A.10"));
             l.Add(new KeyValuePair<string,string>("a11","A.11"));
             l.Add(new KeyValuePair<string,string>("a12","A.12"));
+            l.Add(new KeyValuePair<string,string>("a13","A.13"));
+            l.Add(new KeyValuePair<string,string>("a14","A.14"));
+            l.Add(new KeyValuePair<string,string>("a15","A.15"));
             l.Add(new KeyValuePair<string,string>("b1","Β.1"));
             l.Add(new KeyValuePair<string,string>("b2","Β.2"));
             l.Add(new KeyValuePair<string,string>("b3","Β.3"));
@@ -73,7 +76,18 @@ namespace HR.Web
         public static DateTime DateFromInput(string input)
         {
             input = input.Substring(input.IndexOf(',') + 1);
-            return DateTime.ParseExact(input, "yyyy-MM-dd", CultureInfo.CurrentCulture);;
+            //return DateTime.ParseExact(input, "yyyy-MM-dd", CultureInfo.CurrentCulture);;
+            DateTime date;
+            try
+            {
+                date = DateTime.ParseExact(input, "dd-MM-yyyy", CultureInfo.CurrentCulture);
+            }
+            catch
+            {
+                date = DateTime.ParseExact(input, "dd/MM/yyyy", CultureInfo.CurrentCulture);
+
+            }
+            return DateTime.ParseExact(input, "dd-MM-yyyy", CultureInfo.CurrentCulture);
         }
         
         public static int GetTemplateID(Employee emp,Employee eval)
@@ -82,7 +96,7 @@ namespace HR.Web
             {
                 return 10;
             }
-            if(emp.Teams.Where(x=>x.Position >= 70 || x.Position == 60.1 || x.Position==60.2).Any())
+            if(emp.Teams.Where(x=>x.Position >= 70 || x.Position == 60.1 || x.Position==60.2).Any() || emp.ID == 99)
             {
                 return 9;
             }
@@ -104,7 +118,8 @@ namespace HR.Web
         
         public static byte[] ExportEmpEvals(rContext context,int bossID = 0)
         {
-            IronXL.License.LicenseKey = "IRONXL.CHATZIPARADEISISI.16621-8503EC3404-HRKDSZ-A6MNT3GSNY5W-SIKQLQDHSO7G-HTLGTVI2UBY6-IE2DAQCFKAA5-6LPKI4D4PHAH-SBY2ZD-TKYWZDGBX42AEA-DEPLOYMENT.TRIAL-6ZZ7QG.TRIAL.EXPIRES.24.JUN.2021";
+            //IronXL.License.LicenseKey = "IRONXL.CHATZIPARADEISISI.16621-8503EC3404-HRKDSZ-A6MNT3GSNY5W-SIKQLQDHSO7G-HTLGTVI2UBY6-IE2DAQCFKAA5-6LPKI4D4PHAH-SBY2ZD-TKYWZDGBX42AEA-DEPLOYMENT.TRIAL-6ZZ7QG.TRIAL.EXPIRES.24.JUN.2021";
+            IronXL.License.LicenseKey = "IRONXL.HATZOS42.29628-21B36C3B1D-S24Y2GNSF43GQL4D-A2ZI7IGHCW72-XUNNSB4HYNLW-EISSKWRMLVUJ-SRGSDVXK55LO-RM7T7V-TP755XBEMZSAUA-DEPLOYMENT.TRIAL-IJWULE.TRIAL.EXPIRES.23.JUL.2021";
             ApiEvaluationData evApi = new ApiEvaluationData();
             rContext c = context;
             List<Evaluation> evals = new List<Evaluation>();
@@ -133,12 +148,12 @@ namespace HR.Web
 
             int row = 2;
             int initialCol = 2;
+            int jumpCol = 6;
             string homeDir = AppContext.BaseDirectory;
             string fullPath;
             WorkBook wb;
             if (bossID != 0)
             {
-                //fullPath = homeDir + @"\Content\ReportTemplates\hr_template.xlsx";
                 try
                 {
                     fullPath = HttpContext.Current.Server.MapPath(@"~\Content\ReportTemplates\hr_template.xlsx");
@@ -149,19 +164,14 @@ namespace HR.Web
                     fullPath = @"C:\ReportTemplates\hr_template.xlsx";
                     wb = WorkBook.LoadExcel(fullPath);
                 }
-                //fullPath = System.Web.Hosting.HostingEnvironment.MapPath(@"~\Content\ReportTemplates\hr_template.xlsx");
-                //fullPath = @"T:\ToolboxStorage\Applications\HR\ReportTemplates\hr_template.xlsx";
             }
             else
             {
-                //fullPath = homeDir + @"\Content\ReportTemplates\hr_total_template.xlsx";
                 fullPath = HttpContext.Current.Server.MapPath(@"~\Content\ReportTemplates\hr_total_template.xlsx");
                 wb = WorkBook.LoadExcel(fullPath);
-                //fullPath = System.Web.Hosting.HostingEnvironment.MapPath(@"~\Content\ReportTemplates\hr_total_template.xlsx");
-                //fullPath = @"T:\ToolboxStorage\Applications\HR\ReportTemplates\hr_total_template.xlsx";
                 initialCol++;
+                jumpCol++;
             }
-            //WorkBook wb = WorkBook.LoadExcel(fullPath);
             WorkSheet ws = wb.GetWorkSheet("Sheet1");
             foreach (var eval in evals)
             {
@@ -181,7 +191,7 @@ namespace HR.Web
                 foreach (var a in answers)
                 {
                     ws.SetCellValue(row, col, a);
-                    if (col == 7 && !isManager)
+                    if (col == jumpCol && !isManager)
                     {
                         col += 2;
                     }
@@ -194,6 +204,105 @@ namespace HR.Web
             return result;
         }
         
+        //public static void FastExcelTest(rContext context,int bossID = 0)
+        //{
+        //    ApiEvaluationData evApi = new ApiEvaluationData();
+        //    rContext c = context;
+        //    List<Evaluation> evals = new List<Evaluation>();
+        //    IEnumerable<Employee> emps;
+        //    if(bossID == 0)
+        //    {
+        //        emps = c.Underlings;
+        //    }
+        //    else
+        //    {
+        //        emps = c.Subordinates;
+        //    }
+        //    foreach (var e in emps)
+        //    {
+        //        IEnumerable<Evaluation> ev;
+        //        if (bossID != 0)
+        //        {
+        //            ev = evApi.GetEmpEvaluations(e.ID).Where(x => x.EvaluatorID == bossID);
+        //        }
+        //        else
+        //        {
+        //            ev = evApi.GetEmpEvaluations(e.ID);
+        //        }
+        //        evals.AddRange(ev);
+        //    }
+
+        //    int row = 2;
+        //    int initialCol = 2;
+        //    int jumpCol = 6;
+        //    string homeDir = AppContext.BaseDirectory;
+        //    string fullPath;
+        //    if (bossID != 0)
+        //    {
+        //        try
+        //        {
+        //            fullPath = HttpContext.Current.Server.MapPath(@"~\Content\ReportTemplates\hr_template.xlsx");
+        //        }
+        //        catch
+        //        {
+        //            fullPath = @"C:\Users\chatziparadeisis.i\Documents\hr_export\hr_template - Copy.xlsx";
+        //        }
+        //    }
+        //    else
+        //    {
+        //        fullPath = HttpContext.Current.Server.MapPath(@"~\Content\ReportTemplates\hr_total_template.xlsx");
+        //        initialCol++;
+        //        jumpCol++;
+        //    }
+        //    var template = new FileInfo(fullPath);
+        //    string outputPath = @"C:\Users\chatziparadeisis.i\Documents\hr_export\fast.xlsx";
+        //    var output = new FileInfo(outputPath);
+        //    FastExcel.Worksheet worksheet = new FastExcel.Worksheet();
+        //    List<FastExcel.Row> rows = new List<FastExcel.Row>();
+        //    foreach (var eval in evals)
+        //    {
+        //        List<FastExcel.Cell> cells = new List<FastExcel.Cell>();
+        //        bool isManager = eval.Sections.First().questions.Count() > 5;
+        //        string Name = c.Emps.Where(x => x.ID == eval.EvalueeID).Single().FullName;
+        //        string Grade = eval.GetScore().ToString().Replace(".", ",");
+        //        List<string> answers = eval.Sections.OrderBy(x => x.Order).SelectMany(x => x.questions).Select(x => x.savedvalue).ToList();
+        //        if (bossID == 0)
+        //        {
+        //            string evalName = c.Emps.Where(x => x.ID == eval.EvaluatorID).Single().FullName;
+        //            cells.Add(new FastExcel.Cell(3, Grade));
+        //            cells.Add(new FastExcel.Cell(2, evalName));
+        //        }
+        //        else
+        //        {
+        //            cells.Add(new FastExcel.Cell(1, Name));
+        //            cells.Add(new FastExcel.Cell(2, Grade));
+        //        }
+        //        int col = initialCol;
+        //        foreach (var a in answers)
+        //        {
+        //            cells.Add(new FastExcel.Cell(col + 1, a));
+        //            if (col == jumpCol && !isManager)
+        //            {
+        //                col += 2;
+        //            }
+        //            col++;
+        //        }
+        //        row++;
+        //        //worksheet.AddRow(new FastExcel.Row(row, cells));
+        //        rows.Add(new FastExcel.Row(row, cells));
+        //        //rows.Add(new FastExcel.Row(row, cells));
+        //    }
+        //    worksheet.Rows = rows;
+        //    if (File.Exists(outputPath))
+        //    {
+        //        File.Delete(outputPath);
+        //    }
+        //    using (FastExcel.FastExcel fastExcel = new FastExcel.FastExcel(template))
+        //    {
+        //        fastExcel.Update(worksheet,1);
+        //    }
+        //}
+
         public static string NumToLetter(int num)
         {
             switch (num)

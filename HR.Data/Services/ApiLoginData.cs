@@ -14,6 +14,7 @@ namespace HR.Data.Services
         public Account GetUser(string name,string pass)
         {
             var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/login");
+            client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
             request.AddParameter("user", name);
@@ -22,8 +23,10 @@ namespace HR.Data.Services
             string result = response.Content;
             dynamic eval = JsonConvert.DeserializeObject(result);
             Account newAccount = new Account();
+            Employee emp = new Employee();
             try
             {
+                emp.FromJobjectFull(eval);
                 newAccount.CreateUser(eval);
                 return newAccount;
             }

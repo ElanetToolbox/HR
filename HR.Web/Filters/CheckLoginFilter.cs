@@ -14,7 +14,7 @@ namespace HR.Web.Filters
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             var accountCookie = HttpContext.Current.Request.Cookies.Get("account");
-            if (string.IsNullOrEmpty(accountCookie.Value))
+            if (accountCookie == null || string.IsNullOrEmpty(accountCookie.Value))
             {
                 var controller = filterContext.Controller;
                 if (controller.GetType() != typeof(AccountController))

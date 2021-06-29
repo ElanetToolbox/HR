@@ -116,8 +116,20 @@
 
         <form class="login-container" method="post" action="/Account/Verify">
             <p><input type="text" name="Username" placeholder="Όνομα Χρήστη"></p>
-            <p><input type="password" name="Password" placeholder="Κωδικός"></p>
+            <p><input type="password" name="Password" placeholder="Κωδικός" id="pass"></p>
             <p><input type="submit" name="Commit" value="Είσοδος" id="btn"></p>
+            <p><a href="https://wiki.elanet.gr/wp-login.php?action=lostpassword">Χάσατε το συνθηματικό σας;</a></p>
         </form>
     </div>
 </div>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("pass");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    } 
+</script>
