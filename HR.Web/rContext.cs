@@ -1,4 +1,5 @@
 ﻿using HR.Data.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,6 +18,11 @@ namespace HR.Web
 
         public List<Position> Positions { get; set; }
         public List<Department> Departments { get; set; }
+
+        public List<Evaluation> EvaluationTemplates { get; set; }
+        public List<KeyValuePair<int,JObject>> TemplateJsons { get; set; }
+
+        public JArray EvaluationData { get; set; }
 
         public rContext()
         {
@@ -53,7 +59,7 @@ namespace HR.Web
                 }
                 else
                 {
-                    var z = Emps.Where(x=>x.isDirector).ToList();
+                    var z = Emps.Where(x=>x.isDirector || x.ID == 177).ToList();
                     Subordinates.AddRange(z);
                 }
             }
@@ -67,6 +73,13 @@ namespace HR.Web
             }
             Subordinates = Subordinates.Distinct().ToList();
             Subordinates.ForEach(x => x.GetEvalStatus(User.ID));
+        }
+        
+        public void UpdateEmployee(Employee emp)
+        {
+            var oldEmp = Emps.Where(x => x.ID == emp.ID).Single();
+            Emps.Remove(oldEmp);
+            Emps.Add(emp);
         }
 
         public void GetUnderlings()
@@ -117,6 +130,38 @@ namespace HR.Web
                 }
             }
             Subordinates = Subordinates.Distinct().ToList();
+        }
+
+        public void Initialize(LoginInfo info)
+        {
+            User = info.User;
+            Positions = info.Positions;
+            Departments = info.Departments;
+            Emps = info.Employees;
+            EvaluationTemplates = info.EvaluationTemplates;
+            EvaluationData = info.EvaluationData;
+            TemplateJsons = info.TemplateJsons;
+            GetSubordinates();
+            GetUnderlings();
+        }
+
+        public void GetEmpEvaluations(int EmpID)
+        {
+            var evals = EvaluationData.Where(x => (int)x.SelectToken("EmployeeID") == EmpID);
+            var emp = Emps.Where(x => x.ID == EmpID).Single();
+            foreach (JObject item in evals)
+            {
+                int evaluatorID = (int)item.SelectToken("EvaluatorID");
+                var evaluator = Emps.Where(x => x.ID == evaluatorID).Single();
+                int templateID = Functions.GetTemplateID(emp, evaluator);
+                var templateJson = TemplateJsons.Where(x => x.Key == templateID).Single().Value;
+                Evaluation newEval = HR.Data.Functions.TemplateFromJobject((JObject)templateJson.DeepClone());
+                newEval.FillEvaluation(item);
+                if (!emp.Evaluations.Where(x => x.EvalID == newEval.EvalID).Any())
+                {
+                    emp.Evaluations.Add(newEval);
+                }
+            }
         }
 
 

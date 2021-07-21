@@ -11,7 +11,7 @@ namespace HR.Web.Controllers
 {
     public class EmployeesController : Controller
     {
-        IEmployeeData db;
+        ApiEmpData db;
         Employee currentEmp;
 
         public EmployeesController()
@@ -23,14 +23,7 @@ namespace HR.Web.Controllers
         {
             rContext currentContext = Session[nameof(currentContext)] as rContext;
             IEnumerable<Employee> model;
-            if (currentContext.Emps == null)
-            {
-                model = db.GetAll();
-            }
-            else
-            {
-                model = currentContext.Underlings;
-            }
+            model = currentContext.Underlings;
             model.ToList().ForEach(x => x.GetEvalStatus(currentContext.User.ID));
             string emps = string.Join("\n", currentContext.Subordinates.Select(x => x.FullName).ToList());
             ViewBag.Title = "Προσωπικό";
@@ -51,11 +44,12 @@ namespace HR.Web.Controllers
             {
                 ID = currentContext.User.ID;
             }
-            var model = db.Get(ID);
+            currentContext.GetEmpEvaluations(ID);
+            var model = currentContext.Emps.Where(x=>x.ID == ID).Single();
             model.GetSupervisor(currentContext.Emps);
             currentEmp = model;
-            currentEmp.Evaluations = new List<Evaluation>();
-            currentEmp.Evaluations = new ApiEvaluationData().GetEmpEvaluations(ID);
+            //currentEmp.Evaluations = new List<Evaluation>();
+            //currentEmp.Evaluations = new ApiEvaluationData().GetEmpEvaluations(ID);
             return View("Details",model);
         }
 
@@ -74,15 +68,16 @@ namespace HR.Web.Controllers
         public ActionResult Edit(int id)
         {
             rContext currentContext = Session[nameof(currentContext)] as rContext;
-            Employee employee = db.Get(id);
-            currentContext.Positions = db.GetPositions().ToList();
-            currentContext.Departments = db.GetDepartments().ToList();
+            Employee employee = currentContext.Emps.Where(x=>x.ID == id).Single();
+            currentContext.Positions = currentContext.Positions;
+            currentContext.Departments = currentContext.Departments;
             return View(employee);
         }
         
         [HttpPost]
         public ActionResult Edit(Employee emp)
         {
+            rContext currentContext = Session[nameof(currentContext)] as rContext;
             emp.Teams = new List<Team>();
             var positions = Request.Form["positions"].Split(',');
             var departments = Request.Form["departments"].Split(',');
@@ -101,6 +96,7 @@ namespace HR.Web.Controllers
                 }
             }
             db.UpdateEmployee(emp);
+            currentContext.UpdateEmployee(emp);
             return Details(emp.ID);
         }
     }

@@ -23,11 +23,12 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            rContext c = new rContext();
-            ApiEmpData e_api = new ApiEmpData();
-            ApiEvaluationData ev_api = new ApiEvaluationData();
-            c.Emps = e_api.GetAll().ToList();
-            c.Emps.ForEach(x => x.GetEvalStatus(99));
+            ApiLoginData api = new ApiLoginData();
+            LoginInfo d = api.GetLogin("deligiannis", "konzoom93");
+            //var d = api.GetAll().ToList();
+            //d.ForEach(x => x.GetEvalStatus(99));
+            //var ss = d.Where(x => !x.isEvaluated).Select(x=>x.FullName).ToList();
+            //string res = string.Join("\n", ss);
             //c.User = e_api.Get();
             //var h = c.Emps.Where(x=>x.Teams.Where(y=>y.Name != null).Where(y=>y.Name.Contains("Ν11ΕΑ")).Any()).ToList();
             //WorkBook wb = WorkBook.Create(ExcelFileFormat.XLSX);
@@ -92,69 +93,5 @@ namespace Tester
             #endregion
         }
 
-        private static void ExportEmpEvals(int bossID = 0)
-        {
-            ApiEmpData api = new ApiEmpData();
-            ApiEvaluationData evApi = new ApiEvaluationData();
-            rContext c = new rContext();
-            c.Emps = api.GetAll().ToList();
-            if (bossID != 0)
-            {
-                Employee b = api.Get(bossID);
-                c.User = b;
-                c.GetSubordinates();
-            }
-            else
-            {
-                c.Subordinates = c.Emps;
-            }
-            List<Evaluation> evals = new List<Evaluation>();
-            foreach (var e in c.Subordinates)
-            {
-                IEnumerable<Evaluation> ev;
-                if (bossID != 0)
-                {
-                    ev = evApi.GetEmpEvaluations(e.ID).Where(x => x.EvaluatorID == bossID);
-                }
-                else
-                {
-                    ev = evApi.GetEmpEvaluations(e.ID);
-                }
-                evals.AddRange(ev);
-            }
-
-            int row = 2;
-            WorkBook wb = WorkBook.LoadExcel(@"C:\Users\chatziparadeisis.i\Documents\hr_template.xlsx");
-            WorkSheet ws = wb.GetWorkSheet("Sheet1");
-            foreach (var eval in evals)
-            {
-                bool isManager = eval.Sections.First().questions.Count() > 5;
-                string Name = c.Emps.Where(x => x.ID == eval.EvalueeID).Single().FullName;
-                string Grade = eval.GetScore().ToString().Replace(".",",");
-                List<string> answers = eval.Sections.OrderBy(x => x.Order).SelectMany(x => x.questions).Select(x => x.savedvalue).ToList();
-                ws.SetCellValue(row, 0, Name);
-                ws.SetCellValue(row, 1, Grade);
-                int col = 2;
-                foreach (var a in answers)
-                {
-                    ws.SetCellValue(row, col, a);
-                    if (col == 6 && !isManager)
-                    {
-                        col += 2;
-                    }
-                    col++;
-                }
-                row++;
-            }
-            if (bossID == 0)
-            {
-                wb.SaveAs(@"C:\Users\chatziparadeisis.i\Documents\hr_export\total.xlsx");
-            }
-            else
-            {
-                wb.SaveAs(@"C:\Users\chatziparadeisis.i\Documents\hr_export\"+c.User.LastName+".xlsx");
-            }
-            wb.Close();
-        }
     }
 }

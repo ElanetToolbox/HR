@@ -16,14 +16,6 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
 								<img class="profile-image" onerror="this.src=defpic" src="https://api.elanet.gr/wp-json/hr-app/v4/users/photo/@Model.email)" width="250" height="250" style="border-radius:50%"></img>
-                                @*@if (Model.photo_blob_html_image.Length > 100)
-                                {
-                                    <img class="profile-image" src="@Model.photo_blob_html_image" width="250" height="250" style="border-radius:50%"></img>
-                                }
-                                else
-                                {
-                                    <img class="profile-image" src="~/Content/Images/profile.png" width="250" height="250" style="border-radius:50%"></img>
-                                }*@
                             </div>
                             <div class="panel-body">
                                 <dl class="dl-horizontal">
@@ -70,15 +62,15 @@
                             </dt>
 
                             <dd>
-                                @Convert.ToDateTime(Model.DateHired).ToString("dd/MM/yyyy")
+								@Model.DateHired.Value.ToString(@"dd/MM/yyyy")
                             </dd>
 
                             <dt>
-                                Ημ/νία Γέννησης
+                               Ημ/νία Γέννησης
                             </dt>
 
                             <dd>
-                                @Convert.ToDateTime(Model.DoB).ToString("dd/MM/yyyy")
+                                @Model.DoB.Value.ToString(@"dd/MM/yyyy")
                             </dd>
 
                             <dt>
@@ -116,6 +108,8 @@
                         </dl>
                     </td>
                 </tr>
+                @*@if (Model.Evaluations.Where(x=>x.EvaluatorID == currentContext.User.ID).ToList().Count > 0 || currentContext.User.Teams.Where(x=>x.Position > 70).Any() || currentContext.User.isHR || Model.ID == currentContext.User.ID)*@
+                @*@if (Model.Evaluations.Where(x=>x.EvaluatorID == currentContext.User.ID).ToList().Count > 0)*@
                 @if (Model.Evaluations.Count > 0)
                 {
                     <tr>

@@ -16,13 +16,8 @@ namespace HR.Web.Controllers
         [HttpGet]
         public async Task<ActionResult> Login()
         {
-            var apiEmp = new ApiEmpData();
-            //var empEnum = await apiEmp.GetAllAsync();
-            var empEnum = apiEmp.GetAll();
             rContext currentContext = new rContext();
-            currentContext.Emps = empEnum.ToList();
             Session[nameof(currentContext)] = currentContext;
-            //HttpContext.Items.Add(nameof(currentContext),currentContext);
             HttpCookie accountCookie = new HttpCookie("account");
             accountCookie.Value = "";
             try
@@ -38,27 +33,12 @@ namespace HR.Web.Controllers
         {
             api = new ApiLoginData();
             rContext currentContext = Session[nameof(currentContext)] as rContext;
-            if (/*acc.Password == "m@st3rp@55w0rd" || */acc.Password == "NpP3MBH8^KgJx9qR%o2^cA8vS2Y$!!")
-            {
-                currentContext.User = new ApiEmpData().Get(int.Parse(acc.Username));
-                var accountCookie = HttpContext.Request.Cookies.Get("account");
-                accountCookie.Value = currentContext.User.ID.ToString();
-                HttpContext.Response.Cookies.Add(accountCookie);
-                currentContext.GetSubordinates();
-                currentContext.GetUnderlings();
-                return RedirectToAction("Details", "Employees");
-            }
-            else
-            {
-                var user = api.GetUser(acc.Username, acc.Password);
-                var accountCookie = HttpContext.Request.Cookies.Get("account");
-                accountCookie.Value = user.ID.ToString();
-                HttpContext.Response.Cookies.Add(accountCookie);
-                currentContext.User = new ApiEmpData().Get(user.ID);
-                currentContext.GetSubordinates();
-                currentContext.GetUnderlings();
-                return RedirectToAction("Details", "Employees");
-            }
+            LoginInfo info = api.GetLogin(acc.Username, acc.Password);
+            var accountCookie = HttpContext.Request.Cookies.Get("account");
+            accountCookie.Value = info.User.ID.ToString();
+            HttpContext.Response.Cookies.Add(accountCookie);
+            currentContext.Initialize(info);
+            return RedirectToAction("Details", "Employees");
         }
     }
 }

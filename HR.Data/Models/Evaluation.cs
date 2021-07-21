@@ -140,6 +140,62 @@ namespace HR.Data.Models
                 i++;
             }
         }
+
+        public void CreateSectionsFromJArray(JArray array)
+        {
+            Sections = new List<EvalSection>();
+            foreach (JObject item in array)
+            {
+                EvalSection newSection = new EvalSection();
+                JArray questionArray = (JArray)item.SelectToken("questions");
+                item.Remove("questions");
+                newSection = item.ToObject<EvalSection>();
+                if(newSection.SectionType == "matrix")
+                {
+                    List<LinkertQuestion> questions = questionArray.ToObject<List<LinkertQuestion>>();
+                    newSection.questions = new List<IQuestion>();
+                    foreach (var q in questions)
+                    {
+                        q.setDesc();
+                        newSection.questions.Add(q);
+                    }
+                }
+                else if (newSection.SectionType == "text")
+                {
+                    List<TextQuestion> questions = questionArray.ToObject<List<TextQuestion>>();
+                    newSection.questions = new List<IQuestion>();
+                    foreach (var q in questions)
+                    {
+                        newSection.questions.Add(q);
+                    }
+                }
+                Sections.Add(newSection);
+            }
+        }
+
+        public void FillEvaluation(JObject evalData)
+        {
+            EvalID = (int)evalData.SelectToken("EvalID");
+            Date = (DateTime)evalData.SelectToken("TimeCreated");
+            EvalueeID = (int)evalData.SelectToken("EmployeeID");
+            EvaluatorID = (int)evalData.SelectToken("EvaluatorID");
+            personaldata.Year = evalData.SelectToken("forYear").ToString();
+            personaldata.isMidTerm = (bool)evalData.SelectToken("isMidTerm");
+            personaldata.EvaluatorID = EvaluatorID;
+            personaldata.EmployeeID = EvalueeID;
+            var sectionsArray = (JArray)evalData.SelectToken("Sections");
+            foreach (var item in Sections)
+            {
+                var sectionJson = (JArray)sectionsArray.Where(x => (int)x.SelectToken("Order") == item.Order).Single().SelectToken("questions");
+                for (int i = 0; i < item.questions.Count; i++)
+                {
+                    //var derp = sectionJson[i].SelectToken("savedvalue");
+                    item.questions[i].savedvalue = (string)sectionJson[i].SelectToken("savedvalue");
+
+                }
+
+            }
+        }
     }
 
     public class personaldata

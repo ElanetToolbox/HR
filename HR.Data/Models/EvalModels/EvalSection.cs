@@ -118,6 +118,15 @@ namespace HR.Data.Models
                 i++;
             }
         }
+        
+        public void CreateFromJobject(JObject obj)
+        {
+            JArray questionArray = (JArray)obj.SelectToken("questions");
+            obj.Remove("questions");
+
+
+
+        }
 
     }
 }

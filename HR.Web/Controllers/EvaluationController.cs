@@ -29,14 +29,14 @@ namespace HR.Web.Controllers
             if(evalID == 0)
             {
                 int templateID = Functions.GetTemplateID(emp, currentContext.User);
-                model = db.GetTemplateById(templateID);
-                model.TemplateID = templateID;
+                model = currentContext.EvaluationTemplates.Where(x => x.TemplateID == templateID).Single();
                 model.EvaluatorID = currentContext.User.ID;
                 model.EvalueeID = id;
             }
             else
             {
-                model = db.GetByID(evalID);
+                model = emp.Evaluations.Where(x => x.EvalID == evalID).Single();
+                //model = db.GetByID(evalID);
             }
             return View(model);
         }
@@ -56,7 +56,8 @@ namespace HR.Web.Controllers
             var model = eval;
             var emp = currentContext.Emps.Where(x => x.ID == eval.EvalueeID).First();
             int tID = Functions.GetTemplateID(emp,currentContext.User);
-            var clearEval = db.GetTemplateById(tID);
+            //var clearEval = db.GetTemplateById(tID);
+            var clearEval = currentContext.EvaluationTemplates.Where(x=>x.TemplateID == tID).Single();
             model.ScoreTable = clearEval.ScoreTable;
             model.Sections = clearEval.Sections;
             model.EvalueeID = eval.EvalueeID;
@@ -65,7 +66,8 @@ namespace HR.Web.Controllers
             model.Date = DateTime.Now;
             if (model.isComplete())
             {
-                if (Functions.BaseEvalIDs().Contains(eval.EvalID))
+                //if (Functions.BaseEvalIDs().Contains(eval.EvalID))
+                if (eval.EvalID == 0)
                 {
                     db.UploadEval(model);
                 }

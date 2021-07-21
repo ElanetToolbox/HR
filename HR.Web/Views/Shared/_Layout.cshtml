@@ -7,6 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+	<link rel="stylesheet" href="/styles/theme.default.min.css">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/fontawesome/font-awesome.css")
@@ -15,8 +16,10 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/erroralert.js")
     @RenderSection("scripts", required: false)
+	<script type="text/javascript" src="/Scripts/jquery.tablesorter.min.js"></script>
 </head>
 <body>
+    <a href="javascript:" id="return-to-top"><i class="fa fa-arrow-up"></i></a>
     <div class="navbar navbar-inverse navbar-fixed-top" style="background:#42aac3">
         <div class="container">
             <div class="navbar-header">
@@ -25,19 +28,17 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="navbar-li">@Html.ActionLink("Προφίλ", "Details", "Employees")</li>
+                    <li class="navbar-li">@Html.ActionLink("Προφίλ", "Details", "Employees", new { id = currentContext.User.ID })</li>
                     @if (currentContext.Underlings.Count > 0)
                     {
                         <li class="navbar-li">@Html.ActionLink("Προσωπικό", "Index", "Employees")</li>
                         <li class="navbar-li">@Html.ActionLink("Αξιολογήσεις", "Evaluation", "Employees")</li>
                         <li class="navbar-li">@Html.ActionLink("Αναφορές", "Index", "Report")</li>
                     }
-                    <li class="navbar-li">@Html.ActionLink("Άδειες", "Index", "Employees")</li>
-                    <li class="navbar-li">@Html.ActionLink("Αιτήσεις", "Index", "Employees")</li>
                 </ul>
                 <ul class="nav navbar-nav" style="float:right;padding-top:3px">
                     <li class="navbar-li">
-                        <i class="fa fa-sign-out" title="Αποσύνδεση" style="font-size:40px;color:whitesmoke;cursor:pointer" onclick="location.href='@Url.Action("Login", "Account")'"></i>
+                        <i class="fa fa-sign-out" title="Αποσύνδεση" style="font-size:30px;color:whitesmoke;cursor:pointer" onclick="location.href='@Url.Action("Login", "Account")'"></i>
                     </li>
                 </ul>
             </div>
@@ -49,5 +50,19 @@
             <p></p>
         </footer>
     </div>
+    <!-- Google Analytics -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-157416429-1', 'auto');
+        ga('send', 'event', 'HRApp', 'view');
+
+    </script>
+    <!-- End Google Analytics -->
 </body>
 </html>

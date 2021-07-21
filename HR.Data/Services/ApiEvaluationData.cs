@@ -29,7 +29,7 @@ namespace HR.Data.Services
 
         public void UploadEval(Evaluation e)
         {
-            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/evaluations/");
+            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v4/evaluations/");
             client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.PUT);
@@ -41,7 +41,7 @@ namespace HR.Data.Services
 
         public void UpdateEval(Evaluation e)
         {
-            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/evaluations/"+e.EvalID);
+            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v4/evaluations/"+e.EvalID);
             client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.PATCH);
@@ -53,7 +53,7 @@ namespace HR.Data.Services
 
         public Evaluation GetByID(int evalID)
         {
-            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/evaluations/");
+            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v4/evaluations/");
             client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
@@ -67,7 +67,7 @@ namespace HR.Data.Services
 
         public List<Evaluation> GetEmpEvaluations(int EvalueeID)
         {
-            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/evaluations/");
+            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v4/evaluations/");
             client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
@@ -135,7 +135,7 @@ namespace HR.Data.Services
 
         public void UploadEvaluationTemplate(Evaluation e)
         {
-            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/templates/");
+            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v4/templates/");
             client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             var request = new RestRequest(Method.PUT);
             request.AddHeader("Content-Type", "application/json");
@@ -145,26 +145,9 @@ namespace HR.Data.Services
             Console.WriteLine(response.Content);
         }
 
-        public Evaluation GetTemplate()
-        {
-            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/templates/");
-            client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
-            client.Timeout = -1;
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-            request.AddParameter("criteria", "TemplID=4");
-            IRestResponse response = client.Execute(request);
-            string result = response.Content;
-            JObject eval = (JObject)JsonConvert.DeserializeObject(result);
-            var d = (JArray)JsonConvert.DeserializeObject(eval.SelectToken("Templates").ToString());
-            var x = d.First();
-
-            return GetFromToken(x);
-        }
-
         public Evaluation GetTemplateById(int id)
         {
-            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v3/templates/");
+            var client = new RestClient("https://api.elanet.gr/wp-json/hr-app/v4/templates/");
             client.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);

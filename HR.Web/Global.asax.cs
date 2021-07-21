@@ -13,7 +13,7 @@ namespace HR.Web
     {
         protected void Application_Error(object sender, EventArgs e)
         {
-            //Response.Redirect("/Error/Default");
+            Response.Redirect("/Error/Default");
         }
 
         protected void Application_Start()

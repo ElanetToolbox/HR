@@ -14,6 +14,7 @@ namespace HR.Data.Models
     {
         public int ID { get; set; }
         public int EpanekID { get; set; }
+        public int EfdID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string FullName { get; set; }
@@ -53,6 +54,30 @@ namespace HR.Data.Models
         {
             Evaluations = new List<Evaluation>();
             Dictionary<string, object> dict = obj.ToObject<Dictionary<string, object>>();
+            if (dict.ContainsKey("FYEO_EFD_ID"))
+            {
+                try
+                {
+                    EfdID = int.Parse(dict["FYEO_EFD_ID"].ToString());
+                }
+                catch
+                {
+                    EfdID = 0;
+                    return;
+                }
+            }
+            //if (dict.ContainsKey("FYEO_ANENERGOS"))
+            //{
+            //    if((bool)dict["FYEO_ANENERGOS"])
+            //    {
+            //        isActive = false;
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        isActive = true;
+            //    }
+            //}
             if (dict.ContainsKey("id"))
             {
                 ID = int.Parse(dict["id"].ToString());
@@ -204,11 +229,12 @@ namespace HR.Data.Models
             {
                 if (evaluatorID == 99 || evaluatorID == 8 || evaluatorID == 114)
                 {
-                    isEvaluated = evalStr.Contains("isMidTerm");
+                    isEvaluated = !string.IsNullOrWhiteSpace(evalStr);
+                    isEvaluated = (evalStr != "[\r\n  {}\r\n]");
                 }
                 else
                 {
-                    isEvaluated = evalStr.Contains(evaluatorID.ToString() + "}");
+                    isEvaluated = evalStr.Contains(evaluatorID.ToString());
                 }
             }
             catch

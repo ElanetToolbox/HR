@@ -35,7 +35,6 @@ namespace HR.Data.Models
 
         public void setDesc()
         {
-            //int i = 1;
             descriptions = "";
             for (int j = 1; j <= options.Count; j++)
             {
@@ -45,11 +44,6 @@ namespace HR.Data.Models
                 descriptions += numbers + " - " + currentDesc + "\n";
                 j += sameOptions.Count() - 1;
             }
-            //foreach (var opt in options)
-            //{
-            //    descriptions += i.ToString() + " - " + opt.description + "\n";
-            //    i++;
-            //}
         }
 
         public void SplitText()

@@ -5,70 +5,76 @@
 @model IEnumerable<HR.Data.Models.Employee>
 <h2>@ViewBag.Title</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            AA
-        </th>
-        <th>
-            Ονοματεπώνυμο
-        </th>
-        <th>
-            Ημ/νία Πρόσληψης
-        </th>
-        <th>
-            Ημ/νία Γέννησης
-        </th>
-        <th>
-            Διεύθυνση
-        </th>
-        <th>
-            Ειδικότητα
-        </th>
-        <th>
-            Θέση
-        </th>
-        <th></th>
-    </tr>
-@{int i = 1;
-    foreach (var item in Model.OrderBy(x=>x.LastName))
-    {
-        string color;
-        if (item.isEvaluated)
-        {
-            color = "palegreen";
+<table class="tablesorter" id="empIndexTable">
+    <thead>
+        <tr>
+            <th>
+                AA
+            </th>
+            <th>
+                Photo
+            </th>
+            <th>
+                Ονοματεπώνυμο
+            </th>
+            <th>
+                Ημ/νία Πρόσληψης
+            </th>
+            <th>
+                Ημ/νία Γέννησης
+            </th>
+            <th>
+                Διεύθυνση
+            </th>
+            <th>
+                Ειδικότητα
+            </th>
+            <th>
+                Θέση
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int i = 1;
+            foreach (var item in Model.OrderBy(x => x.LastName))
+            {
+                string color;
+                if (item.isEvaluated)
+                {
+                    color = "palegreen";
+                }
+                else
+                {
+                    color = "transparent";
+                }
+                <tr onclick="location.href = '@(Url.Action("Details", "Employees", new { id = item.ID }))'" bgcolor="@color" } style="cursor:pointer">
+                    <td>
+                        @i
+                    </td>
+                    <td>
+                        <img class="profile-image" onerror="this.src=defpic" src="https://api.elanet.gr/wp-json/hr-app/v4/users/photo/@item.email" width="80" height="80" style="border-radius:50%"></img>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Convert.ToDateTime(item.DateHired).ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @Convert.ToDateTime(item.DoB).ToString("dd/MM/yyyy")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Directorate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Specialty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                </tr>
+                i++;
+            }
         }
-        else
-        {
-            color = "transparent";
-        }
-    <tr onclick="location.href = '@(Url.Action("Details", "Employees", new { id = item.ID }))'" bgcolor="@color"} style="cursor:pointer">
-        <td>
-            @i
-        </td>
-        <td class="empphoto" id="@item.email">
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>*@
-        <td>
-            @Convert.ToDateTime(item.DateHired).ToString("dd/MM/yyyy")
-        </td>
-        <td>
-            @Convert.ToDateTime(item.DoB).ToString("dd/MM/yyyy")
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Directorate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Specialty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Position)
-        </td>
-    </tr>
-    i++;
-}
-    }
+    </tbody>
 </table>
